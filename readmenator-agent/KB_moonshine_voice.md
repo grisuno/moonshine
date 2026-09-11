@@ -1,0 +1,453 @@
+# Subsystem: moonshine_voice
+
+## python/src/moonshine_voice/__init__.py
+- Layer: utility
+- Language: py
+- Symbols:
+  - `__getattr__` (function, line 81) `def __getattr__(name)`
+- Depends on: `python/src/moonshine_voice/alphanumeric_listener.py`, `python/src/moonshine_voice/cached_embeddings.py`, `python/src/moonshine_voice/download.py`, `python/src/moonshine_voice/errors.py`, `python/src/moonshine_voice/intent_recognizer.py`, `python/src/moonshine_voice/mic_transcriber.py`, `python/src/moonshine_voice/moonshine_api.py`, `python/src/moonshine_voice/utils.py`
+
+## python/src/moonshine_voice/alphanumeric_listener.py
+- Layer: utility
+- Language: py
+- Symbols:
+  - `AlphanumericEventType` (class, line 40) `class AlphanumericEventType(Enum)`
+  - `AlphanumericEvent` (class, line 49) `class AlphanumericEvent`
+  - `AlphanumericMatch` (class, line 69) `class AlphanumericMatch`
+  - `spoken_form` (method, line 306) `def spoken_form(char)`
+  - `_normalize` (method, line 355) `def _normalize(text)`
+  - `_build_lookup` (method, line 370) `def _build_lookup()`
+  - `_parse_number_words` (method, line 424) `def _parse_number_words(text)`
+  - `AlphanumericMatcher` (class, line 512) `class AlphanumericMatcher`
+  - `letters_only_matcher` (method, line 716) `def letters_only_matcher()`
+  - `digits_only_matcher` (method, line 720) `def digits_only_matcher()`
+  - `AlphanumericListener` (class, line 738) `class AlphanumericListener`
+  - `is_character` (method, line 80) `def is_character(self)`
+  - `is_terminator` (method, line 84) `def is_terminator(self)`
+  - `is_recognized` (method, line 88) `def is_recognized(self)`
+  - `__init__` (method, line 542) `def __init__(self)`
+  - `classify` (method, line 570) `def classify(self, raw_text)`
+  - `classify_sequence` (method, line 606) `def classify_sequence(self, raw_text)`
+  - `_resolve` (method, line 637) `def _resolve(self, text)`
+  - `_resolve_spelled_letter` (method, line 652) `def _resolve_spelled_letter(self, text)`
+  - `_char_accepted` (method, line 705) `def _char_accepted(self, char)`
+  - `__init__` (method, line 808) `def __init__(self, callback)`
+  - `__call__` (method, line 829) `def __call__(self, event)`
+  - `text` (method, line 840) `def text(self)`
+  - `stopped` (method, line 845) `def stopped(self)`
+  - `matcher` (method, line 850) `def matcher(self)`
+  - `clear` (method, line 854) `def clear(self)`
+  - `undo` (method, line 865) `def undo(self)`
+  - `_process_utterance` (method, line 879) `def _process_utterance(self, line)`
+  - `_speak_character` (method, line 941) `def _speak_character(self, char)`
+  - `_play_error_feedback` (method, line 957) `def _play_error_feedback(self)`
+  - `on_event` (method, line 1063) `def on_event(event)`
+- Depends on: `python/src/moonshine_voice/mic_transcriber.py`, `python/src/moonshine_voice/moonshine_api.py`
+- Imported by: `python/src/moonshine_voice/__init__.py`, `python/src/moonshine_voice/dialog_flow.py`, `scripts/eval-alphanumeric.py`
+
+## python/src/moonshine_voice/cached_embeddings.py
+- Layer: infrastructure
+- Language: py
+- Symbols:
+  - `_EmbeddingBackend` (class, line 45) `class _EmbeddingBackend(Protocol)`
+  - `default_cached_embeddings_path` (method, line 62) `def default_cached_embeddings_path()`
+  - `CachedEmbeddings` (class, line 68) `class CachedEmbeddings`
+  - `write_cached_embeddings_tsv` (method, line 260) `def write_cached_embeddings_tsv(path, entries)`
+  - `calculate_embedding` (method, line 52) `def calculate_embedding(self, sentence)`
+  - `distance` (method, line 54) `def distance(self, embedding_a, embedding_b)`
+  - `__init__` (method, line 95) `def __init__(self)`
+  - `active` (method, line 150) `def active(self)`
+  - `path` (method, line 155) `def path(self)`
+  - `metadata` (method, line 159) `def metadata(self)`
+  - `phrases` (method, line 163) `def phrases(self)`
+  - `__len__` (method, line 167) `def __len__(self)`
+  - `__contains__` (method, line 170) `def __contains__(self, sentence)`
+  - `get` (method, line 175) `def get(self, sentence)`
+  - `calculate_embedding` (method, line 179) `def calculate_embedding(self, sentence)`
+  - `distance` (method, line 195) `def distance(self, embedding_a, embedding_b)`
+  - `_load` (method, line 218) `def _load(self, path)`
+  - `_parse_meta` (method, line 238) `def _parse_meta(self, s)`
+  - `_normalize` (method, line 245) `def _normalize(s)`
+- Imported by: `python/src/moonshine_voice/__init__.py`, `python/src/moonshine_voice/dialog_flow.py`
+
+## python/src/moonshine_voice/cli.py
+- Layer: utility
+- Language: py
+- Symbols:
+  - `_package_version` (function, line 50) `def _package_version()`
+  - `_usage` (function, line 68) `def _usage()`
+  - `main` (function, line 91) `def main(argv)`
+- Imported by: `python/tests/test_cli.py`
+
+## python/src/moonshine_voice/dialog_flow.py
+- Layer: infrastructure
+- Language: py
+- Symbols:
+  - `Prompt` (class, line 97) `class Prompt`
+  - `Say` (class, line 102) `class Say(Prompt)`
+  - `Ask` (class, line 110) `class Ask(Prompt)`
+  - `Confirm` (class, line 147) `class Confirm(Prompt)`
+  - `Choose` (class, line 166) `class Choose(Prompt)`
+  - `DialogError` (class, line 187) `class DialogError(Exception)`
+  - `DialogCancelled` (class, line 191) `class DialogCancelled(DialogError)`
+  - `DialogRestart` (class, line 195) `class DialogRestart(DialogError)`
+  - `NoInputError` (class, line 199) `class NoInputError(DialogError)`
+  - `NoMatchError` (class, line 203) `class NoMatchError(DialogError)`
+  - `EmbeddingBackend` (class, line 212) `class EmbeddingBackend(Protocol)`
+  - `PhraseMatcher` (class, line 229) `class PhraseMatcher`
+  - `Dialog` (class, line 335) `class Dialog`
+  - `_AlphaSession` (class, line 432) `class _AlphaSession`
+  - `_ActiveFlow` (class, line 440) `class _ActiveFlow`
+  - `DialogFlow` (class, line 453) `class DialogFlow(TranscriptEventListener)`
+  - `_Reprompt` (class, line 1619) `class _Reprompt(Exception)`
+  - `_AbandonPrompt` (class, line 1624) `class _AbandonPrompt(Exception)`
+  - `_PartialInput` (class, line 1629) `class _PartialInput(Exception)`
+  - `_SpelledPhrase` (class, line 1635) `class _SpelledPhrase(str)`
+  - `spell_out` (method, line 1656) `def spell_out(s)`
+  - `_summarise` (method, line 1684) `def _summarise(text, max_len)`
+  - `_run_beep_diagnostic` (method, line 1704) `def _run_beep_diagnostic()`
+  - `calculate_embedding` (method, line 222) `def calculate_embedding(self, sentence)`
+  - `distance` (method, line 224) `def distance(self, embedding_a, embedding_b)`
+  - `__init__` (method, line 255) `def __init__(self, backend, phrases_by_key)`
+  - `threshold` (method, line 282) `def threshold(self)`
+  - `match` (method, line 285) `def match(self, utterance)`
+  - `match_with_score` (method, line 290) `def match_with_score(self, utterance)`
+  - `__init__` (method, line 345) `def __init__(self, trigger_phrase)`
+  - `say` (method, line 350) `def say(self, text)`
+  - `ask` (method, line 354) `def ask(self, prompt)`
+  - `confirm` (method, line 374) `def confirm(self, prompt)`
+  - `choose` (method, line 384) `def choose(self, prompt, options)`
+  - `cancel` (method, line 402) `def cancel(self)`
+  - `restart` (method, line 405) `def restart(self)`
+  - `replay_last_prompt` (method, line 408) `def replay_last_prompt(self)`
+  - `__init__` (method, line 435) `def __init__(self, matcher)`
+  - `__init__` (method, line 443) `def __init__(self, flow_fn, trigger_phrase)`
+  - `__init__` (method, line 558) `def __init__(self)`
+  - `register_flow` (method, line 662) `def register_flow(self, trigger_phrase, flow)`
+  - `unregister_flow` (method, line 674) `def unregister_flow(self, trigger_phrase)`
+  - `register_global` (method, line 680) `def register_global(self, trigger_phrase, handler)`
+  - `_invalidate_trigger_matcher` (method, line 691) `def _invalidate_trigger_matcher(self)`
+  - `is_active` (method, line 697) `def is_active(self)`
+  - `active_trigger` (method, line 702) `def active_trigger(self)`
+  - `registered_flows` (method, line 707) `def registered_flows(self)`
+  - `on_line_started` (method, line 712) `def on_line_started(self, event)`
+  - `on_line_completed` (method, line 746) `def on_line_completed(self, event)`
+  - `on_error` (method, line 772) `def on_error(self, event)`
+  - `process_utterance` (method, line 777) `def process_utterance(self, utterance)`
+  - `_should_short_circuit_to_alpha` (method, line 870) `def _should_short_circuit_to_alpha(self, active, utterance)`
+  - `_match_trigger` (method, line 888) `def _match_trigger(self, utterance)`
+  - `_get_trigger_matcher` (method, line 910) `def _get_trigger_matcher(self)`
+  - `_start_flow` (method, line 934) `def _start_flow(self, trigger_phrase)`
+  - `_deliver_to_active` (method, line 944) `def _deliver_to_active(self, active, utterance)`
+  - `_advance` (method, line 991) `def _advance(self, active, value)`
+  - `_throw` (method, line 1055) `def _throw(self, active, exc)`
+  - `_set_spelling_mode` (method, line 1091) `def _set_spelling_mode(self, active)`
+  - `_spelling_mode_for_prompt` (method, line 1114) `def _spelling_mode_for_prompt(self, prompt)`
+  - `_alpha_session_for` (method, line 1118) `def _alpha_session_for(self, prompt)`
+  - `_get_spelled_matcher` (method, line 1127) `def _get_spelled_matcher(self)`
+  - `_get_digits_matcher` (method, line 1132) `def _get_digits_matcher(self)`
+  - `_restart_flow` (method, line 1137) `def _restart_flow(self, active)`
+  - `_finish_flow` (method, line 1146) `def _finish_flow(self, active)`
+  - `cancel_active` (method, line 1156) `def cancel_active(self)`
+  - `say` (method, line 1169) `def say(self, text)`
+  - `_invoke_global` (method, line 1199) `def _invoke_global(self, trigger_phrase)`
+  - `_interpret_answer` (method, line 1236) `def _interpret_answer(self, prompt, utterance, active)`
+  - `_interpret_ask` (method, line 1247) `def _interpret_ask(self, prompt, utterance, active)`
+  - `_interpret_alphanumeric` (method, line 1259) `def _interpret_alphanumeric(self, prompt, utterance, active)`
+  - `_interpret_confirm` (method, line 1338) `def _interpret_confirm(self, prompt, utterance, active)`
+  - `_interpret_choose` (method, line 1355) `def _interpret_choose(self, prompt, utterance, active)`
+  - `_get_confirm_matcher` (method, line 1372) `def _get_confirm_matcher(self, prompt)`
+  - `_get_choose_matcher` (method, line 1388) `def _get_choose_matcher(self, prompt)`
+  - `_build_matcher` (method, line 1407) `def _build_matcher(self, phrases_by_key, threshold)`
+  - `_reprompt_or_abandon` (method, line 1424) `def _reprompt_or_abandon(self, prompt, active, exc)`
+  - `_speak` (method, line 1440) `def _speak(self, text)`
+  - `_speak_character_feedback` (method, line 1485) `def _speak_character_feedback(self, character)`
+  - `_play_beep` (method, line 1504) `def _play_beep(self, kind)`
+  - `_play_success_beep` (method, line 1551) `def _play_success_beep(self)`
+  - `_play_error_beep` (method, line 1560) `def _play_error_beep(self)`
+  - `_speak_undo_feedback` (method, line 1569) `def _speak_undo_feedback(self, character)`
+  - `_log` (method, line 1589) `def _log(self, msg)`
+  - `__init__` (method, line 1620) `def __init__(self, text)`
+  - `__init__` (method, line 1625) `def __init__(self, exc)`
+  - `__iter__` (method, line 1650) `def __iter__(self)`
+  - `wifi_setup` (method, line 1980) `def wifi_setup(d)`
+  - `mute` (method, line 2069) `def mute(should_mute)`
+  - `set_spelling_mode` (method, line 2073) `def set_spelling_mode(active)`
+  - `speak` (method, line 2081) `def speak(text)`
+  - `_CompletedLinePrinter` (class, line 2097) `class _CompletedLinePrinter(TranscriptEventListener)`
+  - `on_line_completed` (method, line 2105) `def on_line_completed(self, event)`
+  - `_default_factory` (method, line 633) `def _default_factory(phrases_by_key, threshold)`
+- Depends on: `python/src/moonshine_voice/alphanumeric_listener.py`, `python/src/moonshine_voice/cached_embeddings.py`, `python/src/moonshine_voice/download.py`, `python/src/moonshine_voice/intent_recognizer.py`, `python/src/moonshine_voice/mic_transcriber.py`
+
+## python/src/moonshine_voice/download.py
+- Layer: utility
+- Language: py
+- Symbols:
+  - `EmbeddingModelArch` (class, line 29) `class EmbeddingModelArch(IntEnum)`
+  - `find_model_info` (method, line 168) `def find_model_info(language, model_arch)`
+  - `supported_languages_friendly` (method, line 197) `def supported_languages_friendly()`
+  - `supported_languages` (method, line 203) `def supported_languages()`
+  - `get_components_for_model_info` (method, line 207) `def get_components_for_model_info(model_info)`
+  - `download_model_from_info` (method, line 234) `def download_model_from_info(model_info)`
+  - `supported_embedding_models` (method, line 254) `def supported_embedding_models()`
+  - `supported_embedding_models_friendly` (method, line 259) `def supported_embedding_models_friendly()`
+  - `get_embedding_model_variants` (method, line 266) `def get_embedding_model_variants(model_name)`
+  - `get_embedding_model` (method, line 276) `def get_embedding_model(model_name, variant)`
+  - `_spelling_language_key` (method, line 339) `def _spelling_language_key(language)`
+  - `_spelling_model_root_path` (method, line 358) `def _spelling_model_root_path(language_key, cache_root)`
+  - `download_spelling_model_for_language` (method, line 365) `def download_spelling_model_for_language(language)`
+  - `get_spelling_model_path` (method, line 395) `def get_spelling_model_path(language)`
+  - `get_model_for_language` (method, line 410) `def get_model_for_language(wanted_language, wanted_model_arch)`
+  - `log_model_info` (method, line 438) `def log_model_info(wanted_language, wanted_model_arch)`
+  - `normalize_moonshine_language_tag` (method, line 461) `def normalize_moonshine_language_tag(language)`
+  - `_normalize_tts_language_tag_display` (method, line 467) `def _normalize_tts_language_tag_display(tag)`
+  - `dedupe_tts_language_tags_for_display` (method, line 474) `def dedupe_tts_language_tags_for_display(tags)`
+  - `_tts_asset_cache_root` (method, line 485) `def _tts_asset_cache_root(override)`
+  - `tts_asset_cache_path` (method, line 491) `def tts_asset_cache_path(cache_root)`
+  - `_merge_tts_query_options` (method, line 496) `def _merge_tts_query_options(options)`
+  - `_options_specify_asset_root` (method, line 511) `def _options_specify_asset_root(opts)`
+  - `_voice_query_options` (method, line 522) `def _voice_query_options(options)`
+  - `TtsVoiceEntry` (class, line 549) `class TtsVoiceEntry`
+  - `TtsVoicesByAvailability` (class, line 556) `class TtsVoicesByAvailability(TypedDict)`
+  - `_entries_to_present_and_downloadable` (method, line 563) `def _entries_to_present_and_downloadable(entries)`
+  - `_tts_voices_json_to_catalog` (method, line 569) `def _tts_voices_json_to_catalog(raw)`
+  - `list_tts_languages` (method, line 588) `def list_tts_languages()`
+  - `get_tts_voice_catalog` (method, line 611) `def get_tts_voice_catalog()`
+  - `list_tts_voices` (method, line 634) `def list_tts_voices(language)`
+  - `validate_tts_language` (method, line 673) `def validate_tts_language(language)`
+  - `_normalize_tts_voice_stem` (method, line 701) `def _normalize_tts_voice_stem(stem)`
+  - `_tts_voice_want_aliases` (method, line 711) `def _tts_voice_want_aliases(voice)`
+  - `validate_tts_voice_downloaded` (method, line 728) `def validate_tts_voice_downloaded(language, voice, asset_root)`
+  - `validate_tts_voice_known` (method, line 760) `def validate_tts_voice_known(language, voice)`
+  - `ensure_tts_voice_downloaded` (method, line 799) `def ensure_tts_voice_downloaded(language, voice, asset_root)`
+  - `is_downloadable_tts_asset_key` (method, line 842) `def is_downloadable_tts_asset_key(key)`
+  - `cdn_url_for_tts_asset_key` (method, line 850) `def cdn_url_for_tts_asset_key(key)`
+  - `list_tts_dependency_keys` (method, line 857) `def list_tts_dependency_keys(languages)`
+  - `list_g2p_dependency_keys` (method, line 882) `def list_g2p_dependency_keys(languages, options)`
+  - `download_tts_assets` (method, line 897) `def download_tts_assets(language)`
+  - `download_g2p_assets` (method, line 953) `def download_g2p_assets(language)`
+- Depends on: `python/src/moonshine_voice/download_file.py`, `python/src/moonshine_voice/errors.py`, `python/src/moonshine_voice/moonshine_api.py`
+- Imported by: `python/src/moonshine_voice/__init__.py`, `python/src/moonshine_voice/dialog_flow.py`, `python/src/moonshine_voice/g2p.py`, `python/src/moonshine_voice/intent_recognizer.py`, `python/src/moonshine_voice/tts.py`, `python/src/moonshine_voice/tts.py`, `scripts/analyze_ko_stress.py`, `scripts/compare_ko_phonemes.py`, `scripts/tts_g2p_intelligibility.py`
+
+## python/src/moonshine_voice/download_file.py
+- Layer: utility
+- Language: py
+- Symbols:
+  - `get_cache_dir` (function, line 13) `def get_cache_dir(app_name)`
+  - `hash_file` (function, line 19) `def hash_file(path, algorithm)`
+  - `download_file` (function, line 28) `def download_file(url, dest, expected_sha256, resume, show_progress, timeout)`
+  - `download_model` (function, line 149) `def download_model(url, filename, expected_sha256, app_name)`
+- Imported by: `python/src/moonshine_voice/download.py`
+
+## python/src/moonshine_voice/errors.py
+- Layer: utility
+- Language: py
+- Symbols:
+  - `MoonshineError` (class, line 6) `class MoonshineError(Exception)`
+  - `MoonshineUnknownError` (class, line 14) `class MoonshineUnknownError(MoonshineError)`
+  - `MoonshineInvalidHandleError` (class, line 21) `class MoonshineInvalidHandleError(MoonshineError)`
+  - `MoonshineInvalidArgumentError` (class, line 28) `class MoonshineInvalidArgumentError(MoonshineError)`
+  - `MoonshineTtsLanguageError` (class, line 35) `class MoonshineTtsLanguageError(MoonshineInvalidArgumentError)`
+  - `MoonshineAudioOutputError` (class, line 54) `class MoonshineAudioOutputError(MoonshineError)`
+  - `MoonshineTtsVoiceError` (class, line 72) `class MoonshineTtsVoiceError(MoonshineInvalidArgumentError)`
+  - `check_error` (method, line 107) `def check_error(error_code)`
+  - `__init__` (method, line 9) `def __init__(self, message, error_code)`
+  - `__init__` (method, line 17) `def __init__(self, message)`
+  - `__init__` (method, line 24) `def __init__(self, message)`
+  - `__init__` (method, line 31) `def __init__(self, message)`
+  - `__init__` (method, line 38) `def __init__(self, language, alternatives, message)`
+  - `__init__` (method, line 57) `def __init__(self, message)`
+  - `__init__` (method, line 81) `def __init__(self, voice, language, alternatives)`
+- Imported by: `python/src/moonshine_voice/__init__.py`, `python/src/moonshine_voice/download.py`, `python/src/moonshine_voice/g2p.py`, `python/src/moonshine_voice/intent_recognizer.py`, `python/src/moonshine_voice/moonshine_api.py`, `python/src/moonshine_voice/tts.py`, `scripts/tts_g2p_intelligibility.py`
+
+## python/src/moonshine_voice/g2p.py
+- Layer: utility
+- Language: py
+- Symbols:
+  - `GraphemeToPhonemizer` (class, line 24) `class GraphemeToPhonemizer`
+  - `main` (method, line 118) `def main()`
+  - `__init__` (method, line 30) `def __init__(self, language)`
+  - `language` (method, line 85) `def language(self)`
+  - `asset_root` (method, line 89) `def asset_root(self)`
+  - `to_ipa` (method, line 92) `def to_ipa(self, text, options)`
+  - `close` (method, line 100) `def close(self)`
+  - `__enter__` (method, line 105) `def __enter__(self)`
+  - `__exit__` (method, line 108) `def __exit__(self, exc_type, exc, tb)`
+  - `__del__` (method, line 111) `def __del__(self)`
+- Depends on: `python/src/moonshine_voice/download.py`, `python/src/moonshine_voice/errors.py`, `python/src/moonshine_voice/moonshine_api.py`
+
+## python/src/moonshine_voice/intent_recognizer.py
+- Layer: utility
+- Language: py
+- Symbols:
+  - `IntentMatch` (class, line 29) `class IntentMatch`
+  - `IntentRecognizer` (class, line 42) `class IntentRecognizer(TranscriptEventListener)`
+  - `trigger_phrase` (method, line 37) `def trigger_phrase(self)`
+  - `__init__` (method, line 61) `def __init__(self, model_path, model_arch, model_variant, threshold)`
+  - `_setup_function_signatures` (method, line 109) `def _setup_function_signatures(self)`
+  - `__enter__` (method, line 191) `def __enter__(self)`
+  - `__exit__` (method, line 195) `def __exit__(self, exc_type, exc_val, exc_tb)`
+  - `close` (method, line 199) `def close(self)`
+  - `__del__` (method, line 206) `def __del__(self)`
+  - `register_intent` (method, line 211) `def register_intent(self, trigger_phrase, handler)`
+  - `unregister_intent` (method, line 253) `def unregister_intent(self, trigger_phrase)`
+  - `get_closest_intents` (method, line 274) `def get_closest_intents(self, utterance, tolerance_threshold)`
+  - `process_utterance` (method, line 331) `def process_utterance(self, utterance)`
+  - `threshold` (method, line 358) `def threshold(self)`
+  - `threshold` (method, line 363) `def threshold(self, value)`
+  - `intent_count` (method, line 368) `def intent_count(self)`
+  - `clear_intents` (method, line 377) `def clear_intents(self)`
+  - `calculate_embedding` (method, line 385) `def calculate_embedding(self, sentence)`
+  - `distance` (method, line 421) `def distance(self, embedding_a, embedding_b)`
+  - `set_on_intent` (method, line 454) `def set_on_intent(self, callback)`
+  - `on_line_completed` (method, line 469) `def on_line_completed(self, event)`
+  - `on_error` (method, line 485) `def on_error(self, event)`
+  - `on_intent_triggered_on` (method, line 555) `def on_intent_triggered_on(trigger, utterance, similarity)`
+  - `TranscriptPrinter` (class, line 561) `class TranscriptPrinter(TranscriptEventListener)`
+  - `__init__` (method, line 564) `def __init__(self)`
+  - `update_last_terminal_line` (method, line 567) `def update_last_terminal_line(self, new_text)`
+  - `on_line_started` (method, line 574) `def on_line_started(self, event)`
+  - `on_line_text_changed` (method, line 577) `def on_line_text_changed(self, event)`
+  - `on_line_completed` (method, line 580) `def on_line_completed(self, event)`
+- Depends on: `python/src/moonshine_voice/download.py`, `python/src/moonshine_voice/errors.py`, `python/src/moonshine_voice/moonshine_api.py`
+- Imported by: `python/src/moonshine_voice/__init__.py`, `python/src/moonshine_voice/dialog_flow.py`
+
+## python/src/moonshine_voice/mic_transcriber.py
+- Layer: utility
+- Language: py
+- Symbols:
+  - `MicTranscriber` (class, line 19) `class MicTranscriber`
+  - `__init__` (method, line 22) `def __init__(self, model_path, model_arch, update_interval, device, samplerate, channels, blocksize, options, spelling_model_path, transcribe_flags)`
+  - `_query_device_default_samplerate` (method, line 60) `def _query_device_default_samplerate(self)`
+  - `_open_input_stream` (method, line 78) `def _open_input_stream(self, samplerate, callback)`
+  - `_start_listening` (method, line 89) `def _start_listening(self)`
+  - `_process_audio_queue` (method, line 128) `def _process_audio_queue(self)`
+  - `_add_batch` (method, line 163) `def _add_batch(self, batch)`
+  - `_add_run` (method, line 176) `def _add_run(self, chunks, sample_rate)`
+  - `_start_worker` (method, line 186) `def _start_worker(self)`
+  - `_stop_worker` (method, line 195) `def _stop_worker(self)`
+  - `start` (method, line 202) `def start(self)`
+  - `stop` (method, line 209) `def stop(self)`
+  - `close` (method, line 216) `def close(self)`
+  - `transcribe_flags` (method, line 223) `def transcribe_flags(self)`
+  - `set_transcribe_flags` (method, line 227) `def set_transcribe_flags(self, flags)`
+  - `add_listener` (method, line 236) `def add_listener(self, listener)`
+  - `remove_listener` (method, line 239) `def remove_listener(self, listener)`
+  - `remove_all_listeners` (method, line 242) `def remove_all_listeners(self)`
+  - `push_listener` (method, line 245) `def push_listener(self, listener)`
+  - `pop_listener` (method, line 249) `def pop_listener(self)`
+  - `pop_all_listeners` (method, line 253) `def pop_all_listeners(self)`
+  - `TerminalListener` (class, line 280) `class TerminalListener(TranscriptEventListener)`
+  - `FileListener` (class, line 319) `class FileListener(TranscriptEventListener)`
+  - `audio_callback` (method, line 95) `def audio_callback(in_data, frames, time, status)`
+  - `__init__` (method, line 281) `def __init__(self)`
+  - `update_last_terminal_line` (method, line 286) `def update_last_terminal_line(self, line)`
+  - `on_line_started` (method, line 308) `def on_line_started(self, event)`
+  - `on_line_text_changed` (method, line 311) `def on_line_text_changed(self, event)`
+  - `on_line_completed` (method, line 314) `def on_line_completed(self, event)`
+  - `on_line_completed` (method, line 320) `def on_line_completed(self, event)`
+- Depends on: `python/src/moonshine_voice/utils.py`
+- Imported by: `python/src/moonshine_voice/__init__.py`, `python/src/moonshine_voice/alphanumeric_listener.py`, `python/src/moonshine_voice/dialog_flow.py`
+
+## python/src/moonshine_voice/moonshine_api.py
+- Layer: presentation
+- Language: py
+- Symbols:
+  - `_decode_utf8_from_c` (function, line 34) `def _decode_utf8_from_c(buf)`
+  - `_load_libc` (function, line 42) `def _load_libc()`
+  - `_get_libc` (function, line 56) `def _get_libc()`
+  - `moonshine_free` (function, line 65) `def moonshine_free(address)`
+  - `TranscriptWordC` (class, line 74) `class TranscriptWordC(Structure)`
+  - `SpeakerSpanC` (class, line 85) `class SpeakerSpanC(Structure)`
+  - `TranscriptLineC` (class, line 98) `class TranscriptLineC(Structure)`
+  - `TranscriptC` (class, line 121) `class TranscriptC(Structure)`
+  - `_require_struct_size` (method, line 130) `def _require_struct_size(name, struct, expected, note)`
+  - `TranscriberOptionC` (class, line 166) `class TranscriberOptionC(Structure)`
+  - `MoonshineIntentMatchC` (class, line 179) `class MoonshineIntentMatchC(Structure)`
+  - `ModelArch` (class, line 188) `class ModelArch(IntEnum)`
+  - `model_arch_to_string` (method, line 199) `def model_arch_to_string(model_arch)`
+  - `string_to_model_arch` (method, line 217) `def string_to_model_arch(model_arch_string)`
+  - `WordTiming` (class, line 236) `class WordTiming`
+  - `SpeakerSpan` (class, line 249) `class SpeakerSpan`
+  - `TranscriptLine` (class, line 285) `class TranscriptLine`
+  - `Transcript` (class, line 312) `class Transcript`
+  - `moonshine_options_array` (method, line 322) `def moonshine_options_array(options)`
+  - `moonshine_c_string_array` (method, line 339) `def moonshine_c_string_array(strings)`
+  - `moonshine_memory_arrays` (method, line 348) `def moonshine_memory_arrays(buffers)`
+  - `moonshine_get_g2p_dependencies_string` (method, line 373) `def moonshine_get_g2p_dependencies_string(languages, options)`
+  - `moonshine_get_tts_dependencies_string` (method, line 398) `def moonshine_get_tts_dependencies_string(languages, options)`
+  - `moonshine_try_get_tts_voices` (method, line 423) `def moonshine_try_get_tts_voices(languages, options)`
+  - `moonshine_get_tts_voices_string` (method, line 452) `def moonshine_get_tts_voices_string(languages, options)`
+  - `moonshine_text_to_speech_samples` (method, line 468) `def moonshine_text_to_speech_samples(tts_synthesizer_handle, text, options)`
+  - `moonshine_phonemes_to_speech_samples` (method, line 505) `def moonshine_phonemes_to_speech_samples(tts_synthesizer_handle, phonemes, options)`
+  - `moonshine_text_to_phonemes_string` (method, line 546) `def moonshine_text_to_phonemes_string(grapheme_to_phonemizer_handle, text, options)`
+  - `_MoonshineLib` (class, line 583) `class _MoonshineLib`
+  - `__str__` (method, line 244) `def __str__(self)`
+  - `__str__` (method, line 272) `def __str__(self)`
+  - `__str__` (method, line 302) `def __str__(self)`
+  - `__str__` (method, line 317) `def __str__(self)`
+  - `__new__` (method, line 589) `def __new__(cls)`
+  - `_load_library` (method, line 595) `def _load_library(self)`
+  - `_setup_function_signatures` (method, line 642) `def _setup_function_signatures(self)`
+  - `lib` (method, line 888) `def lib(self)`
+- Depends on: `python/src/moonshine_voice/errors.py`
+- Imported by: `python/src/moonshine_voice/__init__.py`, `python/src/moonshine_voice/alphanumeric_listener.py`, `python/src/moonshine_voice/download.py`, `python/src/moonshine_voice/g2p.py`, `python/src/moonshine_voice/intent_recognizer.py`, `python/src/moonshine_voice/tts.py`, `python/tests/test_modules.py`, `scripts/eval-alphanumeric.py`
+
+## python/src/moonshine_voice/tts.py
+- Layer: utility
+- Language: py
+- Symbols:
+  - `_SayRequest` (class, line 33) `class _SayRequest`
+  - `_PlayItem` (class, line 43) `class _PlayItem`
+  - `_BeepRequest` (class, line 51) `class _BeepRequest`
+  - `_load_beep_samples` (method, line 88) `def _load_beep_samples(np, kind)`
+  - `_import_say_audio_deps` (method, line 116) `def _import_say_audio_deps()`
+  - `_resolve_default_output_index` (method, line 129) `def _resolve_default_output_index(sd)`
+  - `list_output_devices` (method, line 163) `def list_output_devices()`
+  - `_say_enumerate_output_devices` (method, line 219) `def _say_enumerate_output_devices(sd)`
+  - `_say_device_lines` (method, line 241) `def _say_device_lines(outs)`
+  - `_say_device_spec_key` (method, line 245) `def _say_device_spec_key(device)`
+  - `_select_output_sample_rate` (method, line 270) `def _select_output_sample_rate(sd)`
+  - `_resample_linear` (method, line 339) `def _resample_linear(np, samples, source_sr, target_sr)`
+  - `_normalize_clone_argument` (method, line 360) `def _normalize_clone_argument(clone)`
+  - `_autotranscribe_clone_pcm` (method, line 389) `def _autotranscribe_clone_pcm(pcm, sample_rate)`
+  - `_say_resolve_output_index` (method, line 423) `def _say_resolve_output_index(spec_key, outs)`
+  - `TextToSpeech` (class, line 453) `class TextToSpeech`
+  - `_parse_options_cli` (method, line 1333) `def _parse_options_cli(pairs)`
+  - `_write_wav_mono_pcm16` (method, line 1356) `def _write_wav_mono_pcm16(path, samples, sample_rate_hz)`
+  - `_try` (method, line 295) `def _try(sr)`
+  - `__init__` (method, line 477) `def __init__(self, language)`
+  - `_init_playback_state` (method, line 604) `def _init_playback_state(self, output_device, volume, debug)`
+  - `_init_zipvoice_from_clone` (method, line 636) `def _init_zipvoice_from_clone(self, language)`
+  - `_announce_resolved_device` (method, line 734) `def _announce_resolved_device(self, sd, resolved)`
+  - `_log` (method, line 793) `def _log(self, msg)`
+  - `_c_options_for_create` (method, line 819) `def _c_options_for_create(self)`
+  - `language` (method, line 828) `def language(self)`
+  - `asset_root` (method, line 832) `def asset_root(self)`
+  - `synthesize` (method, line 835) `def synthesize(self, text)`
+  - `synthesize_from_phonemes` (method, line 856) `def synthesize_from_phonemes(self, phonemes)`
+  - `say` (method, line 883) `def say(self, text)`
+  - `play_error` (method, line 928) `def play_error(self)`
+  - `play_success` (method, line 962) `def play_success(self)`
+  - `_ensure_say_workers` (method, line 987) `def _ensure_say_workers(self)`
+  - `_synth_worker` (method, line 1005) `def _synth_worker(self)`
+  - `_synthesize_one` (method, line 1060) `def _synthesize_one(self, req, np)`
+  - `_play_worker` (method, line 1069) `def _play_worker(self)`
+  - `_play_one` (method, line 1097) `def _play_one(self, item, sd, np)`
+  - `is_talking` (method, line 1242) `def is_talking(self)`
+  - `wait` (method, line 1255) `def wait(self)`
+  - `stop` (method, line 1260) `def stop(self)`
+  - `close` (method, line 1288) `def close(self)`
+  - `__enter__` (method, line 1320) `def __enter__(self)`
+  - `__exit__` (method, line 1323) `def __exit__(self, exc_type, exc, tb)`
+  - `__del__` (method, line 1326) `def __del__(self)`
+- Depends on: `python/src/moonshine_voice/download.py`, `python/src/moonshine_voice/errors.py`, `python/src/moonshine_voice/moonshine_api.py`, `python/src/moonshine_voice/utils.py`
+
+## python/src/moonshine_voice/utils.py
+- Layer: utility
+- Language: py
+- Symbols:
+  - `get_assets_path` (function, line 9) `def get_assets_path()`
+  - `get_model_path` (function, line 27) `def get_model_path(model_name)`
+  - `load_wav_file` (function, line 47) `def load_wav_file(file_path)`
+- Imported by: `python/src/moonshine_voice/__init__.py`, `python/src/moonshine_voice/mic_transcriber.py`, `python/src/moonshine_voice/tts.py`, `python/src/moonshine_voice/tts.py`, `python/tests/test_modules.py`
