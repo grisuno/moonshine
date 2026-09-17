@@ -1,0 +1,31 @@
+{
+  "tool": "readmenator",
+  "generated_at": "2026-09-17T05:11:21Z",
+  "project_root": "/tmp/push_moonshine_20260917_010128",
+  "files": 567,
+  "symbols": 5438,
+  "imports": 9383,
+  "resolved_imports": 796,
+  "security_findings": 0,
+  "languages": {
+    "java": 28,
+    "cpp": 175,
+    "sh": 28,
+    "h": 150,
+    "kt": 5,
+    "kts": 4,
+    "swift": 41,
+    "py": 63,
+    "cc": 72,
+    "S": 1
+  },
+  "entrypoints": [],
+  "start_here": "INDEX.md",
+  "workflow": [
+    "ls *.md readmenator-*/  # orient: docs first, ignore build noise",
+    "grep -n '<keyword>' INDEX.md",
+    "cat KB_<subsystem>.md",
+    "grep -n '<file>' ARCHITECTURE.md SYMBOLS.md"
+  ],
+  "regenerate": "readmenator . --rebuild"
+}
