@@ -1,8 +1,8 @@
 # Subsystem: tflm_ref
 
 ## micro/neural-tts/host/tflm_ref/add.cpp
-- Doc: Copyright 2021 The TensorFlow Authors.
 - Layer: utility
+- Doc: Copyright 2021 The TensorFlow Authors. All Rights Reserved.
 - Language: cpp
 - Symbols:
   - `EvalAdd` (function, line 35) `TfLiteStatus EvalAdd(TfLiteContext* context, TfLiteNode* node,
@@ -14,16 +14,16 @@
   - `Register_ADD` (function, line 196) `TFLMRegistration Register_ADD()`
 
 ## micro/neural-tts/host/tflm_ref/conv.cpp
-- Doc: Copyright 2024 The TensorFlow Authors.
 - Layer: utility
+- Doc: Copyright 2024 The TensorFlow Authors. All Rights Reserved.
 - Language: cpp
 - Symbols:
   - `ConvEval` (function, line 38) `TfLiteStatus ConvEval(TfLiteContext* context, TfLiteNode* node)`
   - `Register_CONV_2D` (function, line 129) `TFLMRegistration Register_CONV_2D()`
 
 ## micro/neural-tts/host/tflm_ref/host_platform.cpp
-- Doc: Host (desktop) implementations of the TFLM platform hooks the RP2350 build gets from...
-- Layer: utility
+- Layer: data_access
+- Doc: Host (desktop) implementations of the TFLM platform hooks the RP2350 build gets from pico-tflmicro's system_setup.cpp / 
 - Language: cpp
 - Symbols:
   - `InitializeTarget` (function, line 26) `void InitializeTarget()`
@@ -31,8 +31,8 @@
   - `GetCurrentTimeTicks` (function, line 30) `uint32_t GetCurrentTimeTicks()`
 
 ## micro/neural-tts/host/tflm_ref/transpose_conv.cpp
-- Doc: Copyright 2024 The TensorFlow Authors.
 - Layer: utility
+- Doc: Copyright 2024 The TensorFlow Authors. All Rights Reserved.
 - Language: cpp
 - Symbols:
   - `OpData` (struct, line 36)

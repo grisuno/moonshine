@@ -1,7 +1,6 @@
 # Subsystem: MoonshineVoiceTests
 
 ## swift/Tests/MoonshineVoiceTests/AssetDownloaderNetworkTests.swift
-- Doc: testDownloadsAndRunsSttModel: Downloads the tiny English STT model, loads it with...
 - Layer: testing
 - Language: swift
 - Symbols:
@@ -13,7 +12,6 @@
   - `testDownloadsAndRunsIntentModel` (function, line 96)
 
 ## swift/Tests/MoonshineVoiceTests/AssetDownloaderTests.swift
-- Doc: MockURLProtocol: Minimal in-process HTTP stub.
 - Layer: testing
 - Language: swift
 - Symbols:
@@ -45,8 +43,7 @@
   - `testIntentRecognizer_closestIntents_whenEmbeddingModelPresent` (function, line 21)
 
 ## swift/Tests/MoonshineVoiceTests/MicTranscriberThreadingTests.swift
-- Doc: MicTranscriberThreadingTests: ``test_mic_transcriber_threading`` test.
-- Layer: testing
+- Layer: infrastructure
 - Language: swift
 - Symbols:
   - `MicTranscriberThreadingTests` (class, line 21)
@@ -63,7 +60,6 @@
   - `testCaptureCallbackIsNotBlockedByTranscription` (function, line 95)
 
 ## swift/Tests/MoonshineVoiceTests/TextToSpeechTests.swift
-- Doc: testCreateSynthesizer: MARK: - Creation Tests
 - Layer: testing
 - Language: swift
 - Symbols:
@@ -89,7 +85,6 @@
   - `testCloseIdempotent` (function, line 296)
 
 ## swift/Tests/MoonshineVoiceTests/TranscriberTests.swift
-- Doc: testTranscribeWithoutStreaming_beckett: MARK: - Non-Streaming Tests
 - Layer: testing
 - Language: swift
 - Symbols:

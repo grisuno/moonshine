@@ -1,7 +1,7 @@
 # Subsystem: root
 
 ## clang-format.sh
-- Layer: utility
+- Layer: data_access
 - Language: sh
 
 ## settings.gradle.kts

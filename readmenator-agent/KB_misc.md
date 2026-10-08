@@ -1,7 +1,6 @@
 # Subsystem: misc
 
 ## android/java/test/java/ai/moonshine/voice/ExampleUnitTest.java
-- Doc: ExampleUnitTest: Example local unit test, which will execute on the development machine (host)....
 - Layer: testing
 - Language: java
 - Symbols:
@@ -26,25 +25,25 @@
     JNIEnv *env, const std::vector<moonshine_option_t> &co...`
   - `transcript` (function, line 77) `std::unique_ptr<transcript_t> transcript(new transcript_t());`
   - `copy` (function, line 673) `std::vector<uint8_t> copy(static_cast<size_t>(len));`
-  - `MOONSHINE_ERROR_INVALID_ARGUMENT` (variable, line 514) `extern "C" JNIEXPORT int JNICALL Java_ai_moonshine_voice_JNI_moonshineAddAudioToStream( JNIEnv *env, jobject /* this...`
-  - `nullptr` (variable, line 533) `extern "C" JNIEXPORT jobject JNICALL Java_ai_moonshine_voice_JNI_moonshineTranscribeStream(JNIEnv *env, jobject /*...`
-  - `copts` (variable, line 557) `extern "C" JNIEXPORT jint JNICALL Java_ai_moonshine_voice_JNI_moonshineCreateTtsSynthesizerFromFiles( JNIEnv *env...`
-  - `copts` (variable, line 610) `extern "C" JNIEXPORT jint JNICALL Java_ai_moonshine_voice_JNI_moonshineCreateTtsSynthesizerFromMemory( JNIEnv *env...`
-  - `copts` (variable, line 712) `extern "C" JNIEXPORT jstring JNICALL Java_ai_moonshine_voice_JNI_moonshineGetG2pDependencies(JNIEnv *env, jobject /*...`
-  - `copts` (variable, line 752) `extern "C" JNIEXPORT jstring JNICALL Java_ai_moonshine_voice_JNI_moonshineGetTtsDependencies(JNIEnv *env, jobject /*...`
-  - `copts` (variable, line 792) `extern "C" JNIEXPORT jstring JNICALL Java_ai_moonshine_voice_JNI_moonshineGetSttDependencies(JNIEnv *env, jobject /*...`
-  - `copts` (variable, line 832) `extern "C" JNIEXPORT jstring JNICALL Java_ai_moonshine_voice_JNI_moonshineGetIntentDependencies(JNIEnv *env, jobject...`
-  - `copts` (variable, line 872) `extern "C" JNIEXPORT jstring JNICALL Java_ai_moonshine_voice_JNI_moonshineGetTtsVoices(JNIEnv *env, jobject /* this...`
-  - `copts` (variable, line 911) `extern "C" JNIEXPORT jobject JNICALL Java_ai_moonshine_voice_JNI_moonshineTextToSpeech(JNIEnv *env, jobject /* this...`
-  - `copts` (variable, line 961) `extern "C" JNIEXPORT jobject JNICALL Java_ai_moonshine_voice_JNI_moonshinePhonemesToSpeech( JNIEnv *env, jobject /*...`
-  - `copts` (variable, line 1011) `extern "C" JNIEXPORT jint JNICALL Java_ai_moonshine_voice_JNI_moonshineCreateGraphemeToPhonemizerFromFiles( JNIEnv...`
-  - `copts` (variable, line 1064) `extern "C" JNIEXPORT jint JNICALL Java_ai_moonshine_voice_JNI_moonshineCreateGraphemeToPhonemizerFromMemory( JNIEnv...`
-  - `copts` (variable, line 1165) `extern "C" JNIEXPORT jstring JNICALL Java_ai_moonshine_voice_JNI_moonshineTextToPhonemes( JNIEnv *env, jobject /*...`
-  - `MOONSHINE_ERROR_INVALID_ARGUMENT` (variable, line 1205) `extern "C" JNIEXPORT jint JNICALL Java_ai_moonshine_voice_JNI_moonshineCreateIntentRecognizer( JNIEnv *env, jobject...`
-  - `MOONSHINE_ERROR_INVALID_ARGUMENT` (variable, line 1238) `extern "C" JNIEXPORT jint JNICALL Java_ai_moonshine_voice_JNI_moonshineRegisterIntent(JNIEnv *env, jobject /* this...`
-  - `MOONSHINE_ERROR_INVALID_ARGUMENT` (variable, line 1268) `extern "C" JNIEXPORT jint JNICALL Java_ai_moonshine_voice_JNI_moonshineUnregisterIntent( JNIEnv *env, jobject /*...`
-  - `nullptr` (variable, line 1286) `extern "C" JNIEXPORT jobjectArray JNICALL Java_ai_moonshine_voice_JNI_moonshineGetClosestIntents( JNIEnv *env...`
-  - `nullptr` (variable, line 1355) `extern "C" JNIEXPORT jfloatArray JNICALL Java_ai_moonshine_voice_JNI_moonshineCalculateIntentEmbedding( JNIEnv *env...`
+  - `MOONSHINE_ERROR_INVALID_ARGUMENT` (variable, line 514) `extern "C" JNIEXPORT int JNICALL Java_ai_moonshine_voice_JNI_moonshineAddAudioToStream( JNIEnv *env, jobject /* this */, jint transcriber_handle, jint stream_handle, jfloatArray audio_data, jint sampl`
+  - `nullptr` (variable, line 533) `extern "C" JNIEXPORT jobject JNICALL Java_ai_moonshine_voice_JNI_moonshineTranscribeStream(JNIEnv *env, jobject /* this */, jint transcriber_handle, jint stream_handle, jint flags) { try { struct tran`
+  - `copts` (variable, line 557) `extern "C" JNIEXPORT jint JNICALL Java_ai_moonshine_voice_JNI_moonshineCreateTtsSynthesizerFromFiles( JNIEnv *env, jobject /* this */, jstring language, jobjectArray jfilenames, jobjectArray joptions)`
+  - `copts` (variable, line 610) `extern "C" JNIEXPORT jint JNICALL Java_ai_moonshine_voice_JNI_moonshineCreateTtsSynthesizerFromMemory( JNIEnv *env, jobject /* this */, jstring language, jobjectArray jfilenames, jobjectArray jmemory,`
+  - `copts` (variable, line 712) `extern "C" JNIEXPORT jstring JNICALL Java_ai_moonshine_voice_JNI_moonshineGetG2pDependencies(JNIEnv *env, jobject /* this */, jstring languages, jobjectArray joptions) { try { std::vector<moonshine_op`
+  - `copts` (variable, line 752) `extern "C" JNIEXPORT jstring JNICALL Java_ai_moonshine_voice_JNI_moonshineGetTtsDependencies(JNIEnv *env, jobject /* this */, jstring languages, jobjectArray joptions) { try { std::vector<moonshine_op`
+  - `copts` (variable, line 792) `extern "C" JNIEXPORT jstring JNICALL Java_ai_moonshine_voice_JNI_moonshineGetSttDependencies(JNIEnv *env, jobject /* this */, jstring language, jobjectArray joptions) { try { std::vector<moonshine_opt`
+  - `copts` (variable, line 832) `extern "C" JNIEXPORT jstring JNICALL Java_ai_moonshine_voice_JNI_moonshineGetIntentDependencies(JNIEnv *env, jobject /* this */, jstring model_name, jobjectArray joptions) { try { std::vector<moonshin`
+  - `copts` (variable, line 872) `extern "C" JNIEXPORT jstring JNICALL Java_ai_moonshine_voice_JNI_moonshineGetTtsVoices(JNIEnv *env, jobject /* this */, jstring languages, jobjectArray joptions) { try { std::vector<moonshine_option_t`
+  - `copts` (variable, line 911) `extern "C" JNIEXPORT jobject JNICALL Java_ai_moonshine_voice_JNI_moonshineTextToSpeech(JNIEnv *env, jobject /* this */, jint tts_handle, jstring text, jobjectArray joptions) { try { std::vector<moonsh`
+  - `copts` (variable, line 961) `extern "C" JNIEXPORT jobject JNICALL Java_ai_moonshine_voice_JNI_moonshinePhonemesToSpeech( JNIEnv *env, jobject /* this */, jint tts_handle, jstring phonemes, jobjectArray joptions) { try { std::vect`
+  - `copts` (variable, line 1011) `extern "C" JNIEXPORT jint JNICALL Java_ai_moonshine_voice_JNI_moonshineCreateGraphemeToPhonemizerFromFiles( JNIEnv *env, jobject /* this */, jstring language, jobjectArray jfilenames, jobjectArray jop`
+  - `copts` (variable, line 1064) `extern "C" JNIEXPORT jint JNICALL Java_ai_moonshine_voice_JNI_moonshineCreateGraphemeToPhonemizerFromMemory( JNIEnv *env, jobject /* this */, jstring language, jobjectArray jfilenames, jobjectArray jm`
+  - `copts` (variable, line 1165) `extern "C" JNIEXPORT jstring JNICALL Java_ai_moonshine_voice_JNI_moonshineTextToPhonemes( JNIEnv *env, jobject /* this */, jint g2p_handle, jstring text, jobjectArray joptions) { try { std::vector<moo`
+  - `MOONSHINE_ERROR_INVALID_ARGUMENT` (variable, line 1205) `extern "C" JNIEXPORT jint JNICALL Java_ai_moonshine_voice_JNI_moonshineCreateIntentRecognizer( JNIEnv *env, jobject /* this */, jstring model_path, jint embedding_arch, jstring model_variant) { try { `
+  - `MOONSHINE_ERROR_INVALID_ARGUMENT` (variable, line 1238) `extern "C" JNIEXPORT jint JNICALL Java_ai_moonshine_voice_JNI_moonshineRegisterIntent(JNIEnv *env, jobject /* this */, jint intent_handle, jstring canonical_phrase, jfloatArray embedding, jint priorit`
+  - `MOONSHINE_ERROR_INVALID_ARGUMENT` (variable, line 1268) `extern "C" JNIEXPORT jint JNICALL Java_ai_moonshine_voice_JNI_moonshineUnregisterIntent( JNIEnv *env, jobject /* this */, jint intent_handle, jstring canonical_phrase) { try { if (canonical_phrase == `
+  - `nullptr` (variable, line 1286) `extern "C" JNIEXPORT jobjectArray JNICALL Java_ai_moonshine_voice_JNI_moonshineGetClosestIntents( JNIEnv *env, jobject /* this */, jint intent_handle, jstring utterance, jfloat tolerance) { try { if (`
+  - `nullptr` (variable, line 1355) `extern "C" JNIEXPORT jfloatArray JNICALL Java_ai_moonshine_voice_JNI_moonshineCalculateIntentEmbedding( JNIEnv *env, jobject /* this */, jint intent_handle, jstring sentence) { try { if (sentence == n`
   - `LOG_TAG` (macro, line 13) `#define LOG_TAG`
 - Depends on: `core/moonshine-c-api.h`
 
@@ -57,7 +56,6 @@
 - Language: kts
 
 ## examples/android/Transcriber/app/src/main/java/ai/moonshine/androidtranscriber/MainActivity.java
-- Doc: MainActivity: Minimal microphone transcription sample.
 - Layer: utility
 - Language: java
 - Symbols:
@@ -82,19 +80,18 @@
 - Language: sh
 
 ## examples/ios/Transcriber/TranscriberTests/TranscriberTests.swift
-- Doc: TranscriberTests.swift TranscriberTests  Created by Pete Warden on 1/1/26.
 - Layer: testing
+- Doc: TranscriberTests.swift TranscriberTests  Created by Pete Warden on 1/1/26.
 - Language: swift
 - Symbols:
   - `TranscriberTests` (struct, line 10)
 
 ## examples/macos/BasicTranscription/Package.swift
-- Doc: swift-tools-version: 6.1
 - Layer: utility
+- Doc: swift-tools-version: 6.1
 - Language: swift
 
 ## examples/macos/BasicTranscription/Sources/BasicTranscription/main.swift
-- Doc: Arguments: MARK: - Command Line Argument Parsing
 - Layer: utility
 - Language: swift
 - Symbols:
@@ -109,12 +106,11 @@
   - `main` (function, line 146)
 
 ## examples/macos/MicTranscription/Package.swift
-- Doc: swift-tools-version: 6.1
 - Layer: utility
+- Doc: swift-tools-version: 6.1
 - Language: swift
 
 ## examples/macos/MicTranscription/Sources/MicTranscription/main.swift
-- Doc: main: MARK: - Main
 - Layer: utility
 - Language: swift
 - Symbols:
@@ -125,12 +121,11 @@
   - `onLineCompleted` (function, line 55)
 
 ## examples/macos/TextToSpeech/Package.swift
-- Doc: swift-tools-version: 6.1
 - Layer: utility
+- Doc: swift-tools-version: 6.1
 - Language: swift
 
 ## examples/macos/TextToSpeech/Sources/TextToSpeech/main.swift
-- Doc: Arguments: MARK: - Command Line Argument Parsing
 - Layer: utility
 - Language: swift
 - Symbols:
@@ -143,8 +138,8 @@
   - `main` (function, line 246)
 
 ## examples/python/ollama-voice/ollama_voice.py
-- Doc: Example of using the Moonshine Voice library to transcribe speech and send it to an Ollama LLM...
 - Layer: utility
+- Doc: Example of using the Moonshine Voice library to transcribe speech and send it to an Ollama LLM chat interface.
 - Language: py
 - Symbols:
   - `Spinner` (class, line 14) `class Spinner`
@@ -156,8 +151,7 @@
   - `on_line_completed` (method, line 69) `def on_line_completed(self, event)`
 
 ## examples/raspberry-pi/my-dalek/my-dalek.py
-- Doc: TranscriptPrinter: Listener that prints transcript updates to the terminal.
-- Layer: utility
+- Layer: data_access
 - Language: py
 - Symbols:
   - `on_intent_triggered_on` (function, line 38) `def on_intent_triggered_on(trigger, utterance, similarity)`
@@ -174,8 +168,8 @@
   - `on_line_completed` (method, line 63) `def on_line_completed(self, event)`
 
 ## examples/windows/cli-transcriber/cli-transcriber.cpp
-- Doc: Helper class to manage COM initialization
 - Layer: utility
+- Doc: Helper class to manage COM initialization
 - Language: cpp
 - Symbols:
   - `COMInitializer` (class, line 24)
@@ -213,8 +207,8 @@
 - Depends on: `core/moonshine-cpp.h`
 
 ## micro/examples/rp2350/lwipopts.h
-- Doc: Minimal lwIP configuration for the voice WiFi-setup app (moonshine_micro_echo_wifi).
 - Layer: utility
+- Doc: Minimal lwIP configuration for the voice WiFi-setup app (moonshine_micro_echo_wifi).  This firmware only needs to ASSOCI
 - Language: h
 - Symbols:
   - `SPELLING_LWIPOPTS_H_` (macro, line 17) `#define SPELLING_LWIPOPTS_H_`
@@ -261,8 +255,8 @@
   - `LWIP_STATS_DISPLAY` (macro, line 73) `#define LWIP_STATS_DISPLAY`
 
 ## micro/feature-generation/include/feature_generation/feature_generation.h
-- Doc: feature-generation -- portable, heap-free log-mel spectrogram front-end.
 - Layer: utility
+- Doc: feature-generation -- portable, heap-free log-mel spectrogram front-end.  This is the single public header for the modul
 - Language: h
 - Symbols:
   - `kiss_fftr_state` (struct, line 38)
@@ -289,8 +283,8 @@
 - Imported by: `micro/examples/rp2350/src/audio_service.cc`, `micro/examples/rp2350/src/test_app.cc`, `micro/feature-generation/src/log_mel.cc`, `micro/feature-generation/src/mel_streamer.cc`, `micro/feature-generation/tests/feature_generation_test.cc`
 
 ## micro/feature-generation/scripts/generate_mel_tables.py
-- Doc: Emit C++ flash tables (periodic Hann window + CSR Slaney mel filterbank) for the...
 - Layer: utility
+- Doc: Emit C++ flash tables (periodic Hann window + CSR Slaney mel filterbank) for the feature-generation module.  The output 
 - Language: py
 - Symbols:
   - `_include_guard` (function, line 28) `def _include_guard(stem)`
@@ -303,8 +297,8 @@
   - `main` (function, line 105) `def main()`
 
 ## micro/feature-generation/tests/feature_generation_test.cc
-- Doc: Unit tests for the feature-generation module, using TFLM's micro_test.h.
 - Layer: testing
+- Doc: Unit tests for the feature-generation module, using TFLM's micro_test.h.  Covers the shared building blocks (periodic Ha
 - Language: cc
 - Symbols:
   - `DenseToCsr` (function, line 24) `void DenseToCsr(const std::vector<float>& dense, int n_mels, int n_freq,
@@ -320,8 +314,8 @@ TF_LITE_MICRO_TEST(HannWindowPeriodicEndpoints)`
 - Depends on: `micro/feature-generation/include/feature_generation/feature_generation.h`
 
 ## micro/klatt-tts/tests/tts_test.cc
-- Doc: Unit tests for the TTS synth core, using TFLM's micro_test.h.
 - Layer: testing
+- Doc: Unit tests for the TTS synth core, using TFLM's micro_test.h.  Covers the English G2P front-end (text -> phone tokens, n
 - Language: cc
 - Symbols:
   - `Contains` (function, line 17) `bool Contains(const std::vector<std::string>& toks, const char* needle)`
@@ -333,8 +327,8 @@ TF_LITE_MICRO_TEST(G2PProducesPhones)`
 - Depends on: `micro/g2p/include/g2p/g2p.h`, `micro/klatt-tts/include/tts/tts.h`
 
 ## micro/stt/include/stt/stt.h
-- Doc: stt -- on-device speech-to-text (isolated-letter/digit) classifier.
 - Layer: utility
+- Doc: stt -- on-device speech-to-text (isolated-letter/digit) classifier.  Single public header for the module. It exposes:  *
 - Language: h
 - Symbols:
   - `TensorQuant` (struct, line 35)
@@ -353,8 +347,8 @@ TF_LITE_MICRO_TEST(G2PProducesPhones)`
 - Imported by: `micro/examples/rp2350/src/audio_service.cc`, `micro/examples/rp2350/src/test_app.cc`, `micro/stt/src/classifier.cc`, `micro/stt/src/predictor.cc`, `micro/stt/tests/predictor_test.cc`
 
 ## micro/stt/tests/predictor_test.cc
-- Doc: Unit tests for the STT prediction helpers, using TFLM's micro_test.h.
 - Layer: testing
+- Doc: Unit tests for the STT prediction helpers, using TFLM's micro_test.h.  Argmax + stable-softmax are the post-processing t
 - Language: cc
 - Symbols:
   - `TF_LITE_MICRO_TEST` (function, line 14) `TF_LITE_MICRO_TESTS_BEGIN
@@ -367,8 +361,8 @@ TF_LITE_MICRO_TEST(ArgmaxPicksLargest)`
 - Depends on: `micro/stt/include/stt/stt.h`
 
 ## micro/test-support/host/tflm_host_stub.cc
-- Doc: Host (desktop) implementations of the handful of TFLM platform hooks that the modules and the...
 - Layer: testing
+- Doc: Host (desktop) implementations of the handful of TFLM platform hooks that the modules and the micro_test.h harness refer
 - Language: cc
 - Symbols:
   - `MicroPrintf` (function, line 19) `void MicroPrintf(const char* format, ...)`
@@ -379,13 +373,13 @@ TF_LITE_MICRO_TEST(ArgmaxPicksLargest)`
   - `InitializeTarget` (function, line 46) `void InitializeTarget()`
 
 ## micro/test-support/run_micro_test.sh
-- Doc: Run a TFLM micro_test.h binary and translate its output into an exit code.  micro_test.h wraps...
 - Layer: testing
+- Doc: Run a TFLM micro_test.h binary and translate its output into an exit code.  micro_test.h wraps the suite in `while (true
 - Language: sh
 
 ## micro/vad/include/vad/vad.h
-- Doc: vad -- on-device voice activity detection.
 - Layer: utility
+- Doc: vad -- on-device voice activity detection.  Single public header for the module. It exposes the two halves of the VAD:  
 - Language: h
 - Symbols:
   - `VadTensorQuant` (struct, line 38)
@@ -404,14 +398,14 @@ TF_LITE_MICRO_TEST(ArgmaxPicksLargest)`
   - `samples_processed` (function, line 115) `std::size_t samples_processed() const`
   - `Predict` (function, line 60) `float Predict(const float* features) const;`
   - `Start` (function, line 103) `void Start();`
-  - `ExtractClipFrontAligned` (function, line 135) `void ExtractClipFrontAligned(const float* src, std::size_t src_len, std::size_t start, std::size_t end, float* out...`
+  - `ExtractClipFrontAligned` (function, line 135) `void ExtractClipFrontAligned(const float* src, std::size_t src_len, std::size_t start, std::size_t end, float* out, std::size_t clip_len);`
   - `EnergyCentroidIndex` (function, line 145) `std::size_t EnergyCentroidIndex(const int16_t* buf, std::size_t start, std::size_t end);`
   - `VAD_VAD_H_` (macro, line 23) `#define VAD_VAD_H_`
 - Imported by: `micro/examples/rp2350/src/audio_service.cc`, `micro/examples/rp2350/src/test_app.cc`, `micro/vad/src/vad.cc`, `micro/vad/src/vad_segmenter.cc`, `micro/vad/tests/vad_segmenter_test.cc`
 
 ## micro/vad/scripts/generate_vad_embedded_data.py
-- Doc: Generate the compiled-in VAD data blobs for the moonshine-micro Pico build.
 - Layer: data_access
+- Doc: Generate the compiled-in VAD data blobs for the moonshine-micro Pico build.  Produces, under ``examples/rp2350/generated
 - Language: py
 - Symbols:
   - `_smooth_window_frames` (function, line 66) `def _smooth_window_frames()`
@@ -423,8 +417,8 @@ TF_LITE_MICRO_TEST(ArgmaxPicksLargest)`
 - Depends on: `micro/stt/scripts/generate_embedded_data.py`
 
 ## micro/vad/tests/vad_segmenter_test.cc
-- Doc: Unit tests for the VAD segmenter, using TFLM's micro_test.h.
 - Layer: testing
+- Doc: Unit tests for the VAD segmenter, using TFLM's micro_test.h.  These cases exercise segment boundaries (look-behind pre-r
 - Language: cc
 - Symbols:
   - `Repeat` (function, line 20) `std::vector<float> Repeat(float v, int n)`
@@ -440,8 +434,8 @@ TF_LITE_MICRO_TEST(SingleSegmentDetected)`
 - Depends on: `micro/vad/include/vad/vad.h`
 
 ## python/setup.py
-- Doc: Setup script for moonshine-voice package.
 - Layer: infrastructure
+- Doc: Setup script for moonshine-voice package.
 - Language: py
 - Symbols:
   - `BinaryDistribution` (class, line 9) `class BinaryDistribution(Distribution)`
@@ -454,6 +448,6 @@ TF_LITE_MICRO_TEST(SingleSegmentDetected)`
   - `get_tag` (method, line 20) `def get_tag(self)`
 
 ## swift/Package.swift
-- Doc: swift-tools-version: 6.1
 - Layer: utility
+- Doc: swift-tools-version: 6.1
 - Language: swift

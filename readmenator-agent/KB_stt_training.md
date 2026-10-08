@@ -1,18 +1,18 @@
 # Subsystem: stt_training
 
 ## micro/stt-training/stt_training/__init__.py
-- Doc: Standalone training recipe for the moonshine-micro on-device word classifier.
 - Layer: utility
+- Doc: Standalone training recipe for the moonshine-micro on-device word classifier.  This package trains a compact MobileNetV2
 - Language: py
 - Depends on: `micro/stt-training/stt_training/words.py`
 
 ## micro/stt-training/stt_training/augment.py
-- Doc: GPU-resident waveform augmentation, applied before the log-mel front-end.
 - Layer: utility
+- Doc: GPU-resident waveform augmentation, applied before the log-mel front-end.  Simulates the channel and environment variati
 - Language: py
 - Symbols:
   - `WaveformAugment` (class, line 25) `class WaveformAugment(Module)`
-  - `__init__` (method, line 36) `def __init__(self, sample_rate, musan_noise_dir, rir_dir, gain_db, noise_snr_min, noise_snr_max, bandpass_p...`
+  - `__init__` (method, line 36) `def __init__(self, sample_rate, musan_noise_dir, rir_dir, gain_db, noise_snr_min, noise_snr_max, bandpass_p, max_rirs, max_noise_seconds, seed)`
   - `_load_concat_noise` (method, line 82) `def _load_concat_noise(self, noise_dir, max_seconds)`
   - `_load_rirs` (method, line 106) `def _load_rirs(self, rir_dir, max_rirs)`
   - `n_transforms` (method, line 139) `def n_transforms(self)`
@@ -31,8 +31,8 @@
 - Imported by: `micro/stt-training/stt_training/train.py`
 
 ## micro/stt-training/stt_training/checkpoint.py
-- Doc: Shared checkpoint loading for export and evaluation.
 - Layer: utility
+- Doc: Shared checkpoint loading for export and evaluation.
 - Language: py
 - Symbols:
   - `resolve_checkpoint` (function, line 17) `def resolve_checkpoint(path)`
@@ -42,8 +42,8 @@
 - Imported by: `micro/stt-training/stt_training/evaluate.py`, `micro/stt-training/stt_training/export.py`
 
 ## micro/stt-training/stt_training/dataset.py
-- Doc: Speech-Commands-style dataset over local ``<root>/<class>/*.wav`` trees.
 - Layer: data_access
+- Doc: Speech-Commands-style dataset over local ``<root>/<class>/*.wav`` trees.  Loads raw fixed-length waveforms; log-mel feat
 - Language: py
 - Symbols:
   - `_warn_decode_failure` (function, line 27) `def _warn_decode_failure(src, exc)`
@@ -63,8 +63,8 @@
 - Imported by: `micro/stt-training/stt_training/evaluate.py`, `micro/stt-training/stt_training/train.py`
 
 ## micro/stt-training/stt_training/evaluate.py
-- Doc: Evaluate a trained checkpoint (and, optionally, the exported int8 .tflite).
 - Layer: utility
+- Doc: Evaluate a trained checkpoint (and, optionally, the exported int8 .tflite).  Runs the held-out speaker-independent valid
 - Language: py
 - Symbols:
   - `_confusions` (function, line 30) `def _confusions(y_true, y_pred, classes, top)`
@@ -73,8 +73,8 @@
 - Depends on: `micro/stt-training/stt_training/checkpoint.py`, `micro/stt-training/stt_training/dataset.py`, `micro/stt-training/stt_training/export.py`, `micro/stt-training/stt_training/features.py`, `micro/stt-training/stt_training/train.py`
 
 ## micro/stt-training/stt_training/export.py
-- Doc: Export a trained WordCNN to the int8 LiteRT format the RP2350 firmware uses.
 - Layer: utility
+- Doc: Export a trained WordCNN to the int8 LiteRT format the RP2350 firmware uses.  Produces the two artifacts ``moonshine-mic
 - Language: py
 - Symbols:
   - `_inline_buffers` (function, line 37) `def _inline_buffers(buf)`
@@ -88,8 +88,8 @@
 - Imported by: `micro/stt-training/stt_training/evaluate.py`
 
 ## micro/stt-training/stt_training/features.py
-- Doc: Log-mel feature front-end and SpecAugment.
 - Layer: utility
+- Doc: Log-mel feature front-end and SpecAugment.  ``LogMelSpectrogram`` must stay bit-compatible with the on-device feature ge
 - Language: py
 - Symbols:
   - `LogMelSpectrogram` (class, line 16) `class LogMelSpectrogram(Module)`
@@ -102,8 +102,8 @@
 - Imported by: `micro/stt-training/stt_training/evaluate.py`, `micro/stt-training/stt_training/export.py`, `micro/stt-training/stt_training/train.py`
 
 ## micro/stt-training/stt_training/model.py
-- Doc: WordCNN: the compact MobileNetV2-style classifier deployed on the RP2350.
 - Layer: business_logic
+- Doc: WordCNN: the compact MobileNetV2-style classifier deployed on the RP2350.  The architecture is identical to the ``Spelli
 - Language: py
 - Symbols:
   - `_make_divisible` (function, line 19) `def _make_divisible(v, divisor)`
@@ -121,8 +121,8 @@
 - Imported by: `micro/stt-training/stt_training/checkpoint.py`, `micro/stt-training/stt_training/train.py`
 
 ## micro/stt-training/stt_training/train.py
-- Doc: Train the WordCNN command classifier.
 - Layer: utility
+- Doc: Train the WordCNN command classifier.  The vocabulary comes from ``words.txt``; a ``_unknown_`` reject class is added au
 - Language: py
 - Symbols:
   - `default_data_roots` (function, line 49) `def default_data_roots(tts_dir, ps_dir)`
@@ -135,8 +135,8 @@
 - Imported by: `micro/stt-training/stt_training/evaluate.py`
 
 ## micro/stt-training/stt_training/words.py
-- Doc: Vocabulary handling: load ``words.txt`` and turn it into model classes.
 - Layer: utility
+- Doc: Vocabulary handling: load ``words.txt`` and turn it into model classes.  The word list is the single source of truth for
 - Language: py
 - Symbols:
   - `folder_for_word` (function, line 18) `def folder_for_word(word)`

@@ -13,7 +13,6 @@
 - Language: swift
 
 ## swift/Sources/MoonshineVoice/Errors.swift
-- Doc: checkError: Helper function to check error codes and throw appropriate Swift errors
 - Layer: utility
 - Language: swift
 - Symbols:
@@ -28,7 +27,6 @@
 - Language: swift
 
 ## swift/Sources/MoonshineVoice/MicTranscriber.swift
-- Doc: feedCapturedAudio: Sink for a single captured audio buffer.
 - Layer: utility
 - Language: swift
 - Symbols:
@@ -39,7 +37,6 @@
 - Language: swift
 
 ## swift/Sources/MoonshineVoice/MoonshineAPI.swift
-- Doc: getVersion: Get the version of the loaded Moonshine library.
 - Layer: presentation
 - Language: swift
 - Symbols:
@@ -90,7 +87,6 @@
 - Language: swift
 
 ## swift/Sources/MoonshineVoice/TranscriptEventListener.swift
-- Doc: onLineStarted: Called when a new transcription line starts.
 - Layer: infrastructure
 - Language: swift
 - Symbols:
@@ -108,7 +104,6 @@
   - `onError` (function, line 36)
 
 ## swift/Sources/MoonshineVoice/TranscriptionStream.swift
-- Doc: TranscriptionStream: The subset of ``Stream`` that ``MicTranscriber`` drives.
 - Layer: utility
 - Language: swift
 - Symbols:

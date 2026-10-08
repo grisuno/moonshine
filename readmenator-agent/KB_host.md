@@ -1,8 +1,8 @@
 # Subsystem: host
 
 ## micro/neural-tts/host/tts_cli.cc
-- Doc: Native (desktop) driver for the on-device neural TTS engine.
 - Layer: utility
+- Doc: Native (desktop) driver for the on-device neural TTS engine.  Runs the EXACT C++ pipeline the RP2350 firmware runs -- sh
 - Language: cc
 - Symbols:
   - `Sink` (struct, line 67)
@@ -14,8 +14,8 @@
 - Depends on: `micro/neural-tts/include/neural_tts/neural_tts.h`
 
 ## micro/neural-tts/host/worldlite_synth_cli.cc
-- Doc: Host harness for WorldLiteSynth: reads raw [T,61] float32 WORLD-lite controls (f0, benv[48]...
 - Layer: utility
+- Doc: Host harness for WorldLiteSynth: reads raw [T,61] float32 WORLD-lite controls (f0, benv[48], bap[12]) from stdin, writes
 - Language: cc
 - Symbols:
   - `Ctx` (struct, line 39)

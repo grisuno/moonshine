@@ -45,7 +45,6 @@
 - Depends on: `core/moonshine-utils/debug-utils.h`
 
 ## core/moonshine-utils/debug-utils.h
-- Doc: debug_calloc: define DEBUG_CALLOC(size, count) \
 - Layer: utility
 - Language: h
 - Symbols:
@@ -59,7 +58,7 @@ static inline void *debug_callo...`
   - `gate` (function, line 268) `template <typename T>
 T gate(T value, T min, T max)`
   - `log_backtrace` (function, line 253) `void log_backtrace();`
-  - `load_wav_data` (function, line 255) `bool load_wav_data(const char *path, float **out_float_data, size_t *out_num_samples, int32_t *out_sample_rate =...`
+  - `load_wav_data` (function, line 255) `bool load_wav_data(const char *path, float **out_float_data, size_t *out_num_samples, int32_t *out_sample_rate = nullptr);`
   - `save_wav_data` (function, line 258) `bool save_wav_data(const char *path, const float *audio_data, size_t num_samples, uint32_t sample_rate = 16000);`
   - `load_file_into_memory` (function, line 263) `std::vector<uint8_t> load_file_into_memory(const std::string &path);`
   - `save_memory_to_file` (function, line 264) `void save_memory_to_file(const std::string &path, const std::vector<uint8_t> &data);`
@@ -108,7 +107,6 @@ T gate(T value, T min, T max)`
 - Imported by: `core/bin-tokenizer/bin-tokenizer-test.cpp`, `core/bin-tokenizer/bin-tokenizer.cpp`, `core/gemma-embedding-model.cpp`, `core/moonshine-c-api-test.cpp`, `core/moonshine-c-api.cpp`, `core/moonshine-download-smoke.cpp`, `core/moonshine-model.cpp`, `core/moonshine-streaming-model.cpp`, `core/moonshine-tts/src/lang-specific/korean.cpp`, `core/moonshine-tts/src/moonshine-g2p.cpp`, `core/moonshine-tts/src/moonshine-tts.cpp`, `core/moonshine-tts/src/piper-tts.cpp`, `core/moonshine-tts/src/zipvoice-tts.cpp`, `core/moonshine-utils/debug-utils-test.cpp`, `core/moonshine-utils/debug-utils.cpp`, `core/moonshine-utils/file-utils.cpp`, `core/moonshine-utils/test-utils.h`, `core/ort-utils/moonshine-ort-allocator.cpp`, `core/ort-utils/moonshine-tensor-view.cpp`, `core/ort-utils/moonshine-tensor.cpp`, `core/ort-utils/ort-utils.h`, `core/reliability/fuzz-wav-pcm.cpp`, `core/resampler-test.cpp`, `core/resampler.cpp`, `core/speaker-diarizer.cpp`, `core/spelling-model-test.cpp`, `core/spelling-model.cpp`, `core/voice-activity-detector-test.cpp`, `core/voice-activity-detector.cpp`, `core/word-alignment-test.cpp`
 
 ## core/moonshine-utils/file-utils-test.cpp
-- Doc: write_file: Writes `bytes` to `path` for the read-back tests below.
 - Layer: testing
 - Language: cpp
 - Symbols:
@@ -135,8 +133,8 @@ T gate(T value, T min, T max)`
 - Depends on: `core/moonshine-utils/debug-utils.h`, `core/moonshine-utils/file-utils.h`
 
 ## core/moonshine-utils/file-utils.h
-- Doc: Wrapper around std::fread that throws std::runtime_error unless the full requested number of...
 - Layer: utility
+- Doc: Wrapper around std::fread that throws std::runtime_error unless the full requested number of elements is read. `what` is
 - Language: h
 - Symbols:
   - `fread_exact` (function, line 12) `std::size_t fread_exact(void *ptr, std::size_t size, std::size_t count, std::FILE *stream, const char *what = "file");`
@@ -170,8 +168,8 @@ T gate(T value, T min, T max)`
 - Depends on: `core/moonshine-utils/string-utils.h`
 
 ## core/moonshine-utils/string-utils.cpp
-- Doc: See https://stackoverflow.com/questions/2896600/how-to-replace-all-occurrences-of-a-character-in...
 - Layer: utility
+- Doc: See https://stackoverflow.com/questions/2896600/how-to-replace-all-occurrences-of-a-character-in-string
 - Language: cpp
 - Symbols:
   - `replace_all` (function, line 9) `std::string replace_all(std::string str, const std::string &from,

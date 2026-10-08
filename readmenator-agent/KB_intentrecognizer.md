@@ -1,8 +1,7 @@
 # Subsystem: intentrecognizer
 
 ## examples/android/IntentRecognizer/app/src/main/java/ai/moonshine/examples/intentrecognizer/AssetDirectoryCopy.kt
-- Doc: copyDirIfNeeded: package ai.moonshine.examples.intentrecognizer import android.content.Context...
-- Layer: utility
+- Layer: infrastructure
 - Language: kt
 - Symbols:
   - `copyDirIfNeeded` (function, line 10)
@@ -15,7 +14,6 @@
 - Depends on: `android/java/main/java/ai/moonshine/voice/JNI.java`, `android/java/main/java/ai/moonshine/voice/TranscriptEvent.java`
 
 ## examples/android/IntentRecognizer/app/src/main/java/ai/moonshine/examples/intentrecognizer/PhraseAdapter.kt
-- Doc: currentPhrases: val idx = items.indexOfFirst { it.id == id } if (idx >= 0) {...
 - Layer: infrastructure
 - Language: kt
 - Symbols:

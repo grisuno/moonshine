@@ -31,7 +31,6 @@
   - `handleTranscriptLineCompleted` (function, line 231)
 
 ## examples/ios/IntentRecognizer/IntentRecognizer/IntentTranscriptBridge.swift
-- Doc: IntentTranscriptBridge: Forwards streaming and completed transcript lines to...
 - Layer: utility
 - Language: swift
 - Symbols:

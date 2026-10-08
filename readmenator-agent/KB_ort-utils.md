@@ -27,7 +27,6 @@
 - Imported by: `core/gemma-embedding-model.h`, `core/moonshine-c-api.cpp`, `core/moonshine-model.cpp`, `core/moonshine-model.h`, `core/moonshine-streaming-model.cpp`, `core/moonshine-streaming-model.h`, `core/ort-utils/moonshine-ort-allocator.cpp`
 
 ## core/ort-utils/moonshine-tensor-view.cpp
-- Doc: checked_mul: Portable checked multiply for size_t: returns false on overflow (leaving *out...
 - Layer: presentation
 - Language: cpp
 - Symbols:
@@ -71,7 +70,6 @@
 - Depends on: `core/moonshine-utils/debug-utils.h`, `core/ort-utils/moonshine-tensor-view.h`, `core/ort-utils/ort-utils.h`
 
 ## core/ort-utils/moonshine-tensor-view.h
-- Doc: create_ort_value: You need to call ort_api->ReleaseValue(output_ort_tensor) to release this...
 - Layer: presentation
 - Language: h
 - Symbols:
@@ -105,11 +103,10 @@
 - Language: cpp
 - Symbols:
   - `return` (variable, line 6) `extern "C" void moonshine_free_tensor(moonshine_tensor_t *tensor) { if (tensor == NULL) { return;`
-  - `return` (variable, line 15) `extern "C" void moonshine_free_tensor_list( moonshine_tensor_list_t *tensor_list) { if (tensor_list == nullptr) {...`
+  - `return` (variable, line 15) `extern "C" void moonshine_free_tensor_list( moonshine_tensor_list_t *tensor_list) { if (tensor_list == nullptr) { return;`
 - Depends on: `core/moonshine-utils/debug-utils.h`, `core/ort-utils/moonshine-tensor.h`, `core/ort-utils/ort-utils.h`
 
 ## core/ort-utils/moonshine-tensor.h
-- Doc: moonshine_dtype_t: ifdef __cplusplus
 - Layer: utility
 - Language: h
 - Symbols:
@@ -118,7 +115,7 @@
   - `moonshine_dtype_t` (enum, line 11)
   - `moonshine_free_tensor` (function, line 39) `void moonshine_free_tensor(moonshine_tensor_t *tensor);`
   - `moonshine_free_tensor_list` (function, line 41) `void moonshine_free_tensor_list(moonshine_tensor_list_t *tensor_list);`
-  - `moonshine_dtype_t` (variable, line 8) `extern "C" { #endif typedef enum moonshine_dtype_t { MOONSHINE_DTYPE_FLOAT16 = 0, MOONSHINE_DTYPE_FLOAT32 = 1...`
+  - `moonshine_dtype_t` (variable, line 8) `extern "C" { #endif typedef enum moonshine_dtype_t { MOONSHINE_DTYPE_FLOAT16 = 0, MOONSHINE_DTYPE_FLOAT32 = 1, MOONSHINE_DTYPE_FLOAT64 = 2, MOONSHINE_DTYPE_INT8 = 3, MOONSHINE_DTYPE_INT16 = 4, MOONSHI`
   - `MOONSHINE_TENSOR_H` (macro, line 2) `#define MOONSHINE_TENSOR_H`
 - Imported by: `core/ort-utils/moonshine-tensor-view.h`, `core/ort-utils/moonshine-tensor.cpp`
 
@@ -131,7 +128,6 @@
 - Imported by: `core/moonshine-tts/src/ort-session-options.cpp`
 
 ## core/ort-utils/ort-utils-ep-test.cpp
-- Doc: SUBCASE: if defined(__APPLE__)
 - Layer: testing
 - Language: cpp
 - Symbols:
@@ -180,8 +176,8 @@
 - Depends on: `core/ort-utils/ort-utils.h`
 
 ## core/ort-utils/ort-utils.cpp
-- Doc: No memory mapping on Windows and wchar for the file path.
 - Layer: utility
+- Doc: No memory mapping on Windows and wchar for the file path.
 - Language: cpp
 - Symbols:
   - `ort_session_from_path` (function, line 18) `int ort_session_from_path(const OrtApi *ort_api, OrtEnv *env,
@@ -216,26 +212,25 @@
 - Depends on: `core/ort-utils/ort-utils.h`
 
 ## core/ort-utils/ort-utils.h
-- Doc: ort_session_from_asset: if defined(ANDROID)
 - Layer: utility
 - Language: h
 - Symbols:
   - `OrtExecutionProviderOptions` (struct, line 15)
   - `ort_configure_execution_providers` (function, line 114) `inline void ort_configure_execution_providers(
     const OrtApi *ort_api, OrtSessionOptions *sess...`
-  - `ort_session_from_path` (function, line 40) `int ort_session_from_path(const OrtApi *ort_api, OrtEnv *env, OrtSessionOptions *session_options, const char *path...`
-  - `ort_session_from_memory` (function, line 45) `int ort_session_from_memory(const OrtApi *ort_api, OrtEnv *env, OrtSessionOptions *session_options, const uint8_t...`
-  - `ort_session_from_asset` (function, line 51) `int ort_session_from_asset(const OrtApi *ort_api, OrtEnv *env, OrtSessionOptions *session_options, AAssetManager...`
+  - `ort_session_from_path` (function, line 40) `int ort_session_from_path(const OrtApi *ort_api, OrtEnv *env, OrtSessionOptions *session_options, const char *path, OrtSession **session, const char **mmapped_data, size_t *mmapped_data_size);`
+  - `ort_session_from_memory` (function, line 45) `int ort_session_from_memory(const OrtApi *ort_api, OrtEnv *env, OrtSessionOptions *session_options, const uint8_t *data, size_t data_size, OrtSession **session);`
+  - `ort_session_from_asset` (function, line 51) `int ort_session_from_asset(const OrtApi *ort_api, OrtEnv *env, OrtSessionOptions *session_options, AAssetManager *assetManager, const char *path, OrtSession **session, const char **mmapped_data, size_`
   - `ort_get_shape` (function, line 58) `std::vector<int64_t> ort_get_shape(const OrtApi *ort_api, OrtTypeInfo *type_info);`
   - `ort_get_input_shape` (function, line 64) `std::vector<int64_t> ort_get_input_shape(const OrtApi *ort_api, OrtSession *session, int index);`
   - `ort_get_output_shape` (function, line 70) `std::vector<int64_t> ort_get_output_shape(const OrtApi *ort_api, OrtSession *session, int index);`
   - `ort_get_value_shape` (function, line 76) `std::vector<int64_t> ort_get_value_shape(const OrtApi *ort_api, const OrtValue *value);`
   - `ort_maybe_force_single_thread` (function, line 104) `void ort_maybe_force_single_thread(const OrtApi *ort_api, OrtSessionOptions *session_options);`
-  - `ort_append_execution_providers` (function, line 109) `OrtStatus *ort_append_execution_providers( const OrtApi *ort_api, OrtSessionOptions *session_options, const...`
+  - `ort_append_execution_providers` (function, line 109) `OrtStatus *ort_append_execution_providers( const OrtApi *ort_api, OrtSessionOptions *session_options, const std::vector<std::string> &provider_names, const OrtExecutionProviderOptions *config);`
   - `ORT_UTILS_H` (macro, line 2) `#define ORT_UTILS_H`
   - `RETURN_ON_ORT_ERROR` (macro, line 19) `#define RETURN_ON_ORT_ERROR(ort_api, expr)`
   - `LOG_ORT_ERROR` (macro, line 30) `#define LOG_ORT_ERROR(ort_api, expr)`
   - `ORT_RUN` (macro, line 82) `#define ORT_RUN(ort_api, session, input_names, inputs, input_count,         \
-                output_names...`
+                output_names, output_count, outputs)`
 - Depends on: `core/moonshine-utils/debug-utils.h`
 - Imported by: `core/gemma-embedding-model.cpp`, `core/moonshine-c-api.cpp`, `core/moonshine-model.cpp`, `core/moonshine-streaming-model.cpp`, `core/moonshine-tts/src/moonshine-g2p-options.cpp`, `core/moonshine-tts/src/moonshine-tts-options.cpp`, `core/moonshine-tts/src/ort-session-options.h`, `core/ort-utils/moonshine-tensor-view.cpp`, `core/ort-utils/moonshine-tensor.cpp`, `core/ort-utils/ort-utils-cxx.h`, `core/ort-utils/ort-utils-ep-test.cpp`, `core/ort-utils/ort-utils-ep.cpp`, `core/ort-utils/ort-utils-test.cpp`, `core/ort-utils/ort-utils.cpp`, `core/silero-vad.cpp`, `core/spelling-model.cpp`

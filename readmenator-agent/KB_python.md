@@ -1,8 +1,8 @@
 # Subsystem: python
 
 ## examples/python/basic_transcription.py
-- Doc: Basic usage example for Moonshine Voice.
 - Layer: utility
+- Doc: Basic usage example for Moonshine Voice.
 - Language: py
 - Symbols:
   - `transcribe_without_streaming` (function, line 16) `def transcribe_without_streaming(transcriber, audio_data, sample_rate)`
@@ -13,8 +13,8 @@
   - `on_line_completed` (method, line 44) `def on_line_completed(self, event)`
 
 ## examples/python/dialog_flow.py
-- Doc: Multi-step dialog flow example using Moonshine Voice.
-- Layer: utility
+- Layer: infrastructure
+- Doc: Multi-step dialog flow example using Moonshine Voice.  This example demonstrates the :class:`DialogFlow` runner driving 
 - Language: py
 - Symbols:
   - `setup_wifi` (function, line 46) `def setup_wifi(d)`
@@ -38,8 +38,8 @@
   - `speak` (method, line 363) `def speak(text)`
 
 ## examples/python/intent_recognition.py
-- Doc: Intent recognition example using Moonshine Voice.
 - Layer: utility
+- Doc: Intent recognition example using Moonshine Voice.  This example demonstrates how to use the IntentRecognizer to recogniz
 - Language: py
 - Symbols:
   - `on_lights_on` (function, line 26) `def on_lights_on(trigger, utterance, similarity)`
@@ -57,8 +57,8 @@
   - `on_line_completed` (method, line 75) `def on_line_completed(self, event)`
 
 ## examples/python/mic_transcription.py
-- Doc: Uses the MicTranscriber class to transcribe audio from a microphone.
 - Layer: utility
+- Doc: Uses the MicTranscriber class to transcribe audio from a microphone.
 - Language: py
 - Symbols:
   - `TerminalListener` (class, line 14) `class TerminalListener(TranscriptEventListener)`

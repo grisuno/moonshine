@@ -7,7 +7,6 @@
   - `ContentView` (struct, line 3)
 
 ## examples/ios/TextToSpeech/TextToSpeech/TextToSpeechApp.swift
-- Doc: KokoroLanguage: Kokoro/Piper-supported languages with display names.
 - Layer: utility
 - Language: swift
 - Symbols:

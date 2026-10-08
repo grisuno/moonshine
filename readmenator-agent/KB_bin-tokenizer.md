@@ -11,7 +11,6 @@
 - Depends on: `core/bin-tokenizer/bin-tokenizer.h`, `core/moonshine-utils/debug-utils.h`
 
 ## core/bin-tokenizer/bin-tokenizer.cpp
-- Doc: BinTokenizer: if defined(ANDROID)
 - Layer: utility
 - Language: cpp
 - Symbols:

@@ -1,8 +1,8 @@
 # Subsystem: neural_tts
 
 ## micro/neural-tts/include/neural_tts/neural_tts.h
-- Doc: neural_tts -- black-box text-to-speech for the RP2350.
 - Layer: utility
+- Doc: neural_tts -- black-box text-to-speech for the RP2350.  Text in, 16 kHz mono int16 PCM chunks out. Everything else -- G2
 - Language: h
 - Symbols:
   - `Stats` (struct, line 70)
@@ -19,8 +19,8 @@
 - Imported by: `micro/examples/rp2350/src/audio_service.cc`, `micro/examples/rp2350/src/main_i2s_audio_test.cc`, `micro/examples/rp2350/src/tts_service.cc`, `micro/neural-tts/host/tts_cli.cc`, `micro/neural-tts/src/neural_tts.cc`
 
 ## micro/neural-tts/include/neural_tts/pack_format.h
-- Doc: Binary layout of the neural-TTS flash pack, mirroring scripts/export_neural_tts_pack.py (the...
-- Layer: utility
+- Layer: data_access
+- Doc: Binary layout of the neural-TTS flash pack, mirroring scripts/export_neural_tts_pack.py (the writer is the source of tru
 - Language: h
 - Symbols:
   - `PackHeader` (struct, line 46)
@@ -54,8 +54,8 @@
 - Imported by: `micro/neural-tts/include/neural_tts/neural_tts.h`
 
 ## micro/neural-tts/include/neural_tts/pb_decoder.h
-- Doc: TFLM wrapper for the Phase B RVQ decoder (s16x8: int16 activations, int8 weights).
 - Layer: utility
+- Doc: TFLM wrapper for the Phase B RVQ decoder (s16x8: int16 activations, int8 weights). Streams WORLD-lite control frames out
 - Language: h
 - Symbols:
   - `Model` (struct, line 20)
@@ -76,8 +76,8 @@
 - Imported by: `micro/examples/rp2350/src/main_step6_decoder.cc`, `micro/examples/rp2350/src/main_step7_synthesize.cc`, `micro/examples/rp2350/src/main_step7b_framesweep.cc`, `micro/examples/rp2350/src/main_tts_ladder_test.cc`, `micro/neural-tts/src/neural_tts.cc`, `micro/neural-tts/src/pb_decoder.cc`
 
 ## micro/neural-tts/include/neural_tts/worldlite_synth.h
-- Doc: WORLD-lite vocoder synthesis (float32, kissfft) for the RP2350.
 - Layer: utility
+- Doc: WORLD-lite vocoder synthesis (float32, kissfft) for the RP2350.  Renders 61-control WORLD-lite frames -- f0 (Hz, 0 = unv
 - Language: h
 - Symbols:
   - `WorldFrame` (struct, line 51)
@@ -93,7 +93,7 @@
   - `InitTables` (function, line 97) `void InitTables();`
   - `ExpandFrame` (function, line 98) `void ExpandFrame(const WorldFrame& f, float* spec_pow, float* ap) const;`
   - `MinimumPhase` (function, line 99) `void MinimumPhase(const float* log_amp_half, kiss_fft_cpx* min_phase);`
-  - `RenderPulse` (function, line 100) `void RenderPulse(const float* spec_pow, const float* ap, bool voiced, int noise_size, float frac_shift_s, float*...`
+  - `RenderPulse` (function, line 100) `void RenderPulse(const float* spec_pow, const float* ap, bool voiced, int noise_size, float frac_shift_s, float* response);`
   - `FlushTo` (function, line 102) `void FlushTo(int abs_pos, float gain, EmitFn emit, void* emit_user);`
   - `Randn` (function, line 103) `float Randn();`
   - `NEURAL_TTS_WORLDLITE_SYNTH_H_` (macro, line 23) `#define NEURAL_TTS_WORLDLITE_SYNTH_H_`

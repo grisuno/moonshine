@@ -1,8 +1,8 @@
 # Subsystem: tts
 
 ## micro/klatt-tts/include/tts/config.h
-- Doc: Externalized, tunable voice parameters.
 - Layer: infrastructure
+- Doc: Externalized, tunable voice parameters.  Every "magic number" in the synthesizer lives here so it can be overridden at r
 - Language: h
 - Symbols:
   - `VoiceParams` (struct, line 24)
@@ -14,8 +14,8 @@
 - Imported by: `micro/klatt-tts/include/tts/synth_internal.h`, `micro/klatt-tts/include/tts/synth_stream.h`, `micro/klatt-tts/include/tts/tts.h`, `micro/klatt-tts/src/config.cc`, `micro/neural-tts/src/neural_tts.cc`
 
 ## micro/klatt-tts/include/tts/klatt.h
-- Doc: Klatt-style cascade formant synthesizer (simplified).
 - Layer: utility
+- Doc: Klatt-style cascade formant synthesizer (simplified).  This is the "coral" stage from the design notes: it turns a strea
 - Language: h
 - Symbols:
   - `SynthFrame` (struct, line 32)
@@ -41,8 +41,8 @@
 - Imported by: `micro/klatt-tts/include/tts/synth_internal.h`, `micro/klatt-tts/include/tts/synth_stream.h`, `micro/klatt-tts/src/klatt.cc`
 
 ## micro/klatt-tts/include/tts/phonemes.h
-- Doc: English phoneme inventory for the formant synthesizer.
 - Layer: utility
+- Doc: English phoneme inventory for the formant synthesizer.  Keyed by IPA (UTF-8), matching the G2P front-end output. Each en
 - Language: h
 - Symbols:
   - `Phone` (struct, line 45)
@@ -53,8 +53,8 @@
 - Imported by: `micro/klatt-tts/include/tts/config.h`, `micro/klatt-tts/src/phonemes.cc`, `micro/klatt-tts/src/synth_internal.cc`, `micro/klatt-tts/src/synth_stream.cc`
 
 ## micro/klatt-tts/include/tts/synth_internal.h
-- Doc: Shared internals for the batch (synth.cc) and streaming (synth_stream.cc) drivers.
 - Layer: utility
+- Doc: Shared internals for the batch (synth.cc) and streaming (synth_stream.cc) drivers. Factoring these out keeps the two pat
 - Language: h
 - Symbols:
   - `Segment` (struct, line 28)
@@ -64,14 +64,14 @@
   - `SmoothAsym` (function, line 47) `void SmoothAsym(float* v, size_t n, float attack_ms, float release_ms);`
   - `BuildSegments` (function, line 56) `int BuildSegments(const char* const* phones, int n_phones, const VoiceParams& vp, Segment* out, int max_out);`
   - `CountFrames` (function, line 60) `size_t CountFrames(const std::vector<Segment>& segs, float dur_scale);`
-  - `FillParamTracks` (function, line 88) `void FillParamTracks(const std::vector<Segment>& segs, const VoiceParams& vp, float dur_scale, bool question...`
+  - `FillParamTracks` (function, line 88) `void FillParamTracks(const std::vector<Segment>& segs, const VoiceParams& vp, float dur_scale, bool question, ParamTracks& t);`
   - `TTS_SYNTH_INTERNAL_H_` (macro, line 9) `#define TTS_SYNTH_INTERNAL_H_`
 - Depends on: `micro/klatt-tts/include/tts/config.h`, `micro/klatt-tts/include/tts/klatt.h`
 - Imported by: `micro/klatt-tts/include/tts/synth_stream.h`, `micro/klatt-tts/src/synth_internal.cc`, `micro/neural-tts/src/neural_tts.cc`
 
 ## micro/klatt-tts/include/tts/synth_stream.h
-- Doc: Streaming, caller-arena formant synthesizer for the RP2350 (and desktop).
 - Layer: utility
+- Doc: Streaming, caller-arena formant synthesizer for the RP2350 (and desktop).  Unlike the batch Synthesize() (synth.h), whic
 - Language: h
 - Symbols:
   - `StreamOptions` (struct, line 37)
@@ -93,8 +93,8 @@
 - Imported by: `micro/klatt-tts/include/tts/tts.h`, `micro/klatt-tts/src/synth_stream.cc`
 
 ## micro/klatt-tts/include/tts/tts.h
-- Doc: tts -- portable, dependency-free formant (Klatt-style) text-to-speech.
 - Layer: utility
+- Doc: tts -- portable, dependency-free formant (Klatt-style) text-to-speech.  This is the single public header for the module.
 - Language: h
 - Symbols:
   - `TTS_TTS_H_` (macro, line 26) `#define TTS_TTS_H_`

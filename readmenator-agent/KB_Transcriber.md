@@ -1,15 +1,15 @@
 # Subsystem: Transcriber
 
 ## examples/ios/Transcriber/Transcriber/ContentView.swift
-- Doc: ContentView.swift Transcriber  Created by Pete Warden on 1/1/26.
 - Layer: presentation
+- Doc: ContentView.swift Transcriber  Created by Pete Warden on 1/1/26.
 - Language: swift
 - Symbols:
   - `ContentView` (struct, line 11)
 
 ## examples/ios/Transcriber/Transcriber/TranscriberApp.swift
-- Doc: TranscriberApp.swift Transcriber  Created by Pete Warden on 1/1/26.
 - Layer: utility
+- Doc: TranscriberApp.swift Transcriber  Created by Pete Warden on 1/1/26.
 - Language: swift
 - Symbols:
   - `TranscriberApp` (struct, line 13)

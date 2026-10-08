@@ -1,16 +1,16 @@
 # Subsystem: moonshine_voice
 
 ## python/src/moonshine_voice/__init__.py
-- Doc: Moonshine Voice - Fast, accurate, on-device AI library for building interactive voice applications.
 - Layer: utility
+- Doc: Moonshine Voice - Fast, accurate, on-device AI library for building interactive voice applications.  This package provid
 - Language: py
 - Symbols:
   - `__getattr__` (function, line 81) `def __getattr__(name)`
 - Depends on: `python/src/moonshine_voice/alphanumeric_listener.py`, `python/src/moonshine_voice/cached_embeddings.py`, `python/src/moonshine_voice/download.py`, `python/src/moonshine_voice/errors.py`, `python/src/moonshine_voice/intent_recognizer.py`, `python/src/moonshine_voice/mic_transcriber.py`, `python/src/moonshine_voice/moonshine_api.py`, `python/src/moonshine_voice/utils.py`
 
 ## python/src/moonshine_voice/alphanumeric_listener.py
-- Doc: Alphanumeric listener for character-by-character speech-to-text input.
 - Layer: utility
+- Doc: Alphanumeric listener for character-by-character speech-to-text input.  Designed for dictating passwords, serial numbers
 - Language: py
 - Symbols:
   - `AlphanumericEventType` (class, line 40) `class AlphanumericEventType(Enum)`
@@ -48,8 +48,8 @@
 - Imported by: `python/src/moonshine_voice/__init__.py`, `python/src/moonshine_voice/dialog_flow.py`, `scripts/eval-alphanumeric.py`
 
 ## python/src/moonshine_voice/cached_embeddings.py
-- Doc: Load pre-computed sentence embeddings from a packaged TSV file.
 - Layer: infrastructure
+- Doc: Load pre-computed sentence embeddings from a packaged TSV file.  Embedding library-level string constants (the default y
 - Language: py
 - Symbols:
   - `_EmbeddingBackend` (class, line 45) `class _EmbeddingBackend(Protocol)`
@@ -74,8 +74,8 @@
 - Imported by: `python/src/moonshine_voice/__init__.py`, `python/src/moonshine_voice/dialog_flow.py`
 
 ## python/src/moonshine_voice/cli.py
-- Doc: Console-script entry point for the ``moonshine-voice`` package.
 - Layer: utility
+- Doc: Console-script entry point for the ``moonshine-voice`` package.  Installed as the ``moonshine-voice`` and ``moonshine`` 
 - Language: py
 - Symbols:
   - `_package_version` (function, line 50) `def _package_version()`
@@ -84,8 +84,8 @@
 - Imported by: `python/tests/test_cli.py`
 
 ## python/src/moonshine_voice/dialog_flow.py
-- Doc: Generator-based dialog flow runner for Moonshine Voice.
-- Layer: utility
+- Layer: infrastructure
+- Doc: Generator-based dialog flow runner for Moonshine Voice.  A *flow* is an ordinary Python generator function that yields p
 - Language: py
 - Symbols:
   - `Prompt` (class, line 97) `class Prompt`
@@ -185,7 +185,6 @@
 - Depends on: `python/src/moonshine_voice/alphanumeric_listener.py`, `python/src/moonshine_voice/cached_embeddings.py`, `python/src/moonshine_voice/download.py`, `python/src/moonshine_voice/intent_recognizer.py`, `python/src/moonshine_voice/mic_transcriber.py`
 
 ## python/src/moonshine_voice/download.py
-- Doc: EmbeddingModelArch: Supported embedding model architectures.
 - Layer: utility
 - Language: py
 - Symbols:
@@ -233,10 +232,9 @@
   - `download_tts_assets` (method, line 897) `def download_tts_assets(language)`
   - `download_g2p_assets` (method, line 953) `def download_g2p_assets(language)`
 - Depends on: `python/src/moonshine_voice/download_file.py`, `python/src/moonshine_voice/errors.py`, `python/src/moonshine_voice/moonshine_api.py`
-- Imported by: `python/src/moonshine_voice/__init__.py`, `python/src/moonshine_voice/dialog_flow.py`, `python/src/moonshine_voice/g2p.py`, `python/src/moonshine_voice/intent_recognizer.py`, `python/src/moonshine_voice/tts.py`, `scripts/analyze_ko_stress.py`, `scripts/compare_ko_phonemes.py`, `scripts/tts_g2p_intelligibility.py`
+- Imported by: `python/src/moonshine_voice/__init__.py`, `python/src/moonshine_voice/dialog_flow.py`, `python/src/moonshine_voice/g2p.py`, `python/src/moonshine_voice/intent_recognizer.py`, `python/src/moonshine_voice/tts.py`, `python/src/moonshine_voice/tts.py`, `scripts/analyze_ko_stress.py`, `scripts/compare_ko_phonemes.py`, `scripts/tts_g2p_intelligibility.py`
 
 ## python/src/moonshine_voice/download_file.py
-- Doc: get_cache_dir: Get the cache directory, respecting environment override.
 - Layer: utility
 - Language: py
 - Symbols:
@@ -247,8 +245,8 @@
 - Imported by: `python/src/moonshine_voice/download.py`
 
 ## python/src/moonshine_voice/errors.py
-- Doc: Error classes for Moonshine Voice.
 - Layer: utility
+- Doc: Error classes for Moonshine Voice.
 - Language: py
 - Symbols:
   - `MoonshineError` (class, line 6) `class MoonshineError(Exception)`
@@ -269,8 +267,8 @@
 - Imported by: `python/src/moonshine_voice/__init__.py`, `python/src/moonshine_voice/download.py`, `python/src/moonshine_voice/g2p.py`, `python/src/moonshine_voice/intent_recognizer.py`, `python/src/moonshine_voice/moonshine_api.py`, `python/src/moonshine_voice/tts.py`, `scripts/tts_g2p_intelligibility.py`
 
 ## python/src/moonshine_voice/g2p.py
-- Doc: Grapheme-to-phoneme (IPA) via the Moonshine C API.
 - Layer: utility
+- Doc: Grapheme-to-phoneme (IPA) via the Moonshine C API.
 - Language: py
 - Symbols:
   - `GraphemeToPhonemizer` (class, line 24) `class GraphemeToPhonemizer`
@@ -286,8 +284,8 @@
 - Depends on: `python/src/moonshine_voice/download.py`, `python/src/moonshine_voice/errors.py`, `python/src/moonshine_voice/moonshine_api.py`
 
 ## python/src/moonshine_voice/intent_recognizer.py
-- Doc: Intent recognition module for Moonshine Voice.
 - Layer: utility
+- Doc: Intent recognition module for Moonshine Voice.  This module provides intent recognition capabilities using semantic embe
 - Language: py
 - Symbols:
   - `IntentMatch` (class, line 29) `class IntentMatch`
@@ -323,12 +321,11 @@
 - Imported by: `python/src/moonshine_voice/__init__.py`, `python/src/moonshine_voice/dialog_flow.py`
 
 ## python/src/moonshine_voice/mic_transcriber.py
-- Doc: MicTranscriber: MicTranscriber is a class that transcribes audio from a microphone.
 - Layer: utility
 - Language: py
 - Symbols:
   - `MicTranscriber` (class, line 19) `class MicTranscriber`
-  - `__init__` (method, line 22) `def __init__(self, model_path, model_arch, update_interval, device, samplerate, channels, blocksize, options...`
+  - `__init__` (method, line 22) `def __init__(self, model_path, model_arch, update_interval, device, samplerate, channels, blocksize, options, spelling_model_path, transcribe_flags)`
   - `_query_device_default_samplerate` (method, line 60) `def _query_device_default_samplerate(self)`
   - `_open_input_stream` (method, line 78) `def _open_input_stream(self, samplerate, callback)`
   - `_start_listening` (method, line 89) `def _start_listening(self)`
@@ -361,7 +358,6 @@
 - Imported by: `python/src/moonshine_voice/__init__.py`, `python/src/moonshine_voice/alphanumeric_listener.py`, `python/src/moonshine_voice/dialog_flow.py`
 
 ## python/src/moonshine_voice/moonshine_api.py
-- Doc: TranscriptWordC: C structure for transcript_word_t.
 - Layer: presentation
 - Language: py
 - Symbols:
@@ -406,8 +402,8 @@
 - Imported by: `python/src/moonshine_voice/__init__.py`, `python/src/moonshine_voice/alphanumeric_listener.py`, `python/src/moonshine_voice/download.py`, `python/src/moonshine_voice/g2p.py`, `python/src/moonshine_voice/intent_recognizer.py`, `python/src/moonshine_voice/tts.py`, `python/tests/test_modules.py`, `scripts/eval-alphanumeric.py`
 
 ## python/src/moonshine_voice/tts.py
-- Doc: Text-to-speech via the Moonshine C API.
 - Layer: utility
+- Doc: Text-to-speech via the Moonshine C API.
 - Language: py
 - Symbols:
   - `_SayRequest` (class, line 33) `class _SayRequest`
@@ -457,11 +453,11 @@
 - Depends on: `python/src/moonshine_voice/download.py`, `python/src/moonshine_voice/errors.py`, `python/src/moonshine_voice/moonshine_api.py`, `python/src/moonshine_voice/utils.py`
 
 ## python/src/moonshine_voice/utils.py
-- Doc: Utility functions for Moonshine Voice.
 - Layer: utility
+- Doc: Utility functions for Moonshine Voice.
 - Language: py
 - Symbols:
   - `get_assets_path` (function, line 9) `def get_assets_path()`
   - `get_model_path` (function, line 27) `def get_model_path(model_name)`
   - `load_wav_file` (function, line 47) `def load_wav_file(file_path)`
-- Imported by: `python/src/moonshine_voice/__init__.py`, `python/src/moonshine_voice/mic_transcriber.py`, `python/src/moonshine_voice/tts.py`, `python/tests/test_modules.py`
+- Imported by: `python/src/moonshine_voice/__init__.py`, `python/src/moonshine_voice/mic_transcriber.py`, `python/src/moonshine_voice/tts.py`, `python/src/moonshine_voice/tts.py`, `python/tests/test_modules.py`

@@ -1,8 +1,7 @@
 # Subsystem: texttospeech
 
 ## examples/android/TextToSpeech/app/src/main/java/ai/moonshine/examples/texttospeech/AssetDirectoryCopy.kt
-- Doc: copyDirIfNeeded: package ai.moonshine.examples.texttospeech import android.content.Context...
-- Layer: utility
+- Layer: infrastructure
 - Language: kt
 - Symbols:
   - `copyDirIfNeeded` (function, line 10)
