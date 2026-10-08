@@ -1,0 +1,162 @@
+[
+  {
+    "community_a": 0,
+    "community_b": 4,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: core/moonshine-c-api.cpp imports core/moonshine-tts/src/moonshine-asset-catalog.h.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 0,
+    "community_b": 3,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: core/moonshine-c-api.cpp imports core/moonshine-tts/src/moonshine-g2p.h.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 4,
+    "community_b": 2,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: core/moonshine-tts/src/lang-specific/arabic-diac-onnx.cpp imports core/moonshine-tts/src/utf8-utils.h.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 2,
+    "community_b": 3,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: core/moonshine-tts/src/lang-specific/arabic.cpp imports core/moonshine-tts/src/lang-specific/arabic.h.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 3,
+    "community_b": 4,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: core/moonshine-tts/src/lang-specific/arabic.h imports core/moonshine-tts/src/lang-specific/arabic-diac-onnx.h.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 7,
+    "community_b": 3,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: core/moonshine-tts/src/lang-specific/english.cpp imports core/moonshine-tts/src/lang-specific/english.h.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 7,
+    "community_b": 2,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: core/moonshine-tts/src/lang-specific/english.cpp imports core/moonshine-tts/src/g2p-word-log.h.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 2,
+    "community_b": 0,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: core/moonshine-tts/src/lang-specific/korean.cpp imports core/moonshine-utils/debug-utils.h.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 7,
+    "community_b": 4,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: core/moonshine-tts/src/lang-specific/onnx-g2p-models.cpp imports core/moonshine-tts/src/ort-session-options.h.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 5,
+    "community_b": 0,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: core/reliability/fuzz-wav-pcm.cpp imports core/moonshine-utils/debug-utils.h.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 6,
+    "community_b": 1,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: micro/neural-tts/src/neural_tts.cc imports micro/neural-tts/include/neural_tts/neural_tts.h.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 6,
+    "community_b": 9,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: micro/neural-tts/src/neural_tts.cc imports micro/neural-tts/include/neural_tts/pb_decoder.h.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 0,
+    "community_b": 1,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (layer utility) with no import path between community 0 (core: moonshine-cpp) and community 1 (micro/examples/rp2350/src: pack_format).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 0,
+    "community_b": 6,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (layer utility) with no import path between community 0 (core: moonshine-cpp) and community 6 (micro/g2p/src).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 0,
+    "community_b": 7,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language cpp) with no import path between community 0 (core: moonshine-cpp) and community 7 (core/moonshine-tts/src/lang-specific: english-hand-oov).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 0,
+    "community_b": 8,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (layer utility) with no import path between community 0 (core: moonshine-cpp) and community 8 (python/src/moonshine_voice: dialog_flow).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 0,
+    "community_b": 9,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (layer utility) with no import path between community 0 (core: moonshine-cpp) and community 9 (micro/examples/rp2350/src: worldlite_synth).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 0,
+    "community_b": 10,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (layer utility) with no import path between community 0 (core: moonshine-cpp) and community 10 (micro/stt-training/stt_training).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 0,
+    "community_b": 11,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (layer utility) with no import path between community 0 (core: moonshine-cpp) and community 11 (android/java/main/java/ai/moonshine/voice).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 0,
+    "community_b": 12,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language cpp and layer utility) with no import path between community 0 (core: moonshine-cpp) and community 12 (core: cosine-distance-test).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  }
+]

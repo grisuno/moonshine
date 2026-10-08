@@ -1,0 +1,493 @@
+# Architecture (page 3 of 3)
+Previous: [ARCHITECTURE_p2.md](ARCHITECTURE_p2.md)
+
+## External Imports
+
+- `android/java/androidTest/java/ai/moonshine/voice/AssetDownloaderTest.java` -> android.content.Context, android.os.Bundle, androidx.test.InstrumentationRegistry, java.io.File, java.io.IOException, java.nio.file.Files, java.nio.file.Path, java.util.Collections, java.util.List, org.junit.Assume, org.junit.Before, org.junit.Test, static
+- `android/java/androidTest/java/ai/moonshine/voice/IntentRecognizerTest.java` -> androidx.test.InstrumentationRegistry, java.io.File, org.junit.Test, static
+- `android/java/androidTest/java/ai/moonshine/voice/JNITest.java` -> ai.moonshine.voice.Transcript, android.content.Context, androidx.test.InstrumentationRegistry, java.io.File, java.io.FileOutputStream, java.io.IOException, java.io.InputStream, java.nio.file.Files, java.nio.file.Path, java.util.ArrayList, java.util.Arrays, java.util.logging.Logger, org.junit.After, org.junit.Before, org.junit.Test, static
+- `android/java/androidTest/java/ai/moonshine/voice/NoTranscriptionTest.java` -> ai.moonshine.voice.Transcriber, ai.moonshine.voice.TranscriptEventListener, android.content.Context, androidx.test.InstrumentationRegistry, java.io.IOException, java.nio.file.Files, java.nio.file.Path, java.util.ArrayList, java.util.Arrays, java.util.List, java.util.logging.Level, java.util.logging.Logger, org.junit.Before, org.junit.Test, static
+- `android/java/androidTest/java/ai/moonshine/voice/TextToSpeechTest.java` -> android.content.Context, androidx.test.InstrumentationRegistry, java.io.File, java.io.IOException, java.nio.file.Files, java.nio.file.Path, java.util.ArrayList, java.util.List, org.junit.Before, org.junit.Test, static
+- `android/java/androidTest/java/ai/moonshine/voice/TranscriberTest.java` -> ai.moonshine.voice.Transcriber, ai.moonshine.voice.Transcript, ai.moonshine.voice.TranscriptEventListener, android.content.Context, android.util.Log, androidx.test.InstrumentationRegistry, java.io.IOException, java.nio.file.Files, java.nio.file.Path, java.util.ArrayList, java.util.Arrays, java.util.HashMap, java.util.List, java.util.Map, java.util.concurrent.atomic.AtomicInteger, java.util.logging.Level, java.util.logging.Logger, org.junit.Before, org.junit.Test, static
+- `android/java/androidTest/java/ai/moonshine/voice/Utils.java` -> android.content.Context, android.content.res.AssetManager, android.util.Log, java.io.FileOutputStream, java.io.IOException, java.io.InputStream, java.nio.ByteBuffer, java.nio.ByteOrder, java.nio.file.Files, java.nio.file.Path, java.util.ArrayList, java.util.Collections, java.util.List
+- `android/java/main/java/ai/moonshine/voice/AssetDownloader.java` -> androidx.annotation.Nullable, java.io.File, java.io.IOException, java.io.InputStream, java.io.RandomAccessFile, java.net.URLEncoder, java.util.ArrayList, java.util.List, java.util.concurrent.TimeUnit, okhttp3.OkHttpClient, okhttp3.Request, okhttp3.Response, okhttp3.ResponseBody, org.json.JSONArray, org.json.JSONObject
+- `android/java/main/java/ai/moonshine/voice/GraphemeToPhonemizer.java` -> java.util.ArrayList, java.util.List
+- `android/java/main/java/ai/moonshine/voice/IntentRecognizer.java` -> java.util.Arrays, java.util.Collections, java.util.List
+- `android/java/main/java/ai/moonshine/voice/MicCaptureProcessor.java` -> android.media.AudioFormat, android.media.AudioRecord, android.media.MediaRecorder, android.util.Log, java.util.ArrayList, java.util.List, java.util.concurrent.CopyOnWriteArrayList, java.util.concurrent.locks.ReentrantLock
+- `android/java/main/java/ai/moonshine/voice/MicTranscriber.java` -> android.Manifest, android.content.pm.PackageManager, android.util.Log, androidx.appcompat.app.AppCompatActivity, androidx.core.app.ActivityCompat, androidx.core.content.ContextCompat, java.lang.ref.WeakReference, java.util.Map, java.util.concurrent.CompletableFuture, java.util.concurrent.ConcurrentHashMap
+- `android/java/main/java/ai/moonshine/voice/ModelSpec.java` -> androidx.annotation.Nullable, java.util.ArrayList, java.util.List
+- `android/java/main/java/ai/moonshine/voice/MoonshineDownloadWorker.java` -> android.content.Context, androidx.annotation.NonNull, androidx.work.BackoffPolicy, androidx.work.Constraints, androidx.work.Data, androidx.work.NetworkType, androidx.work.OneTimeWorkRequest, androidx.work.Worker, androidx.work.WorkerParameters, java.io.File, java.io.IOException, java.util.concurrent.TimeUnit
+- `android/java/main/java/ai/moonshine/voice/TextToSpeech.java` -> android.content.Context, android.media.AudioAttributes, android.media.AudioDeviceInfo, android.media.AudioFormat, android.media.AudioManager, android.media.AudioTrack, android.util.Log, androidx.annotation.Nullable, java.util.ArrayList, java.util.List, java.util.concurrent.ArrayBlockingQueue, java.util.concurrent.LinkedBlockingQueue, java.util.concurrent.TimeUnit, java.util.concurrent.atomic.AtomicInteger
+- `android/java/main/java/ai/moonshine/voice/Transcriber.java` -> android.content.res.AssetManager, android.util.Log, androidx.appcompat.app.AppCompatActivity, java.io.IOException, java.io.InputStream, java.nio.file.Path, java.nio.file.Paths, java.util.ArrayList, java.util.HashMap, java.util.List, java.util.Map, java.util.concurrent.ConcurrentHashMap, java.util.concurrent.CopyOnWriteArrayList, java.util.concurrent.ExecutorService, java.util.concurrent.Executors, java.util.concurrent.LinkedBlockingQueue, java.util.concurrent.ThreadPoolExecutor, java.util.concurrent.TimeUnit, java.util.concurrent.locks.Lock, java.util.concurrent.locks.ReentrantLock, java.util.function.Consumer
+- `android/java/main/java/ai/moonshine/voice/Transcript.java` -> java.util.List
+- `android/java/main/java/ai/moonshine/voice/TranscriptLine.java` -> java.util.List
+- `android/java/test/java/ai/moonshine/voice/ExampleUnitTest.java` -> org.junit.Test, static
+- `android/moonshine-jni/moonshine-jni.cpp` -> algorithm, android/log_macros.h, cstdint, cstdlib, jni.h, memory, mutex, string, unordered_map, utf8.h, utility, vector
+- `core/benchmark.cpp` -> chrono, cstdio, iostream, string, vector
+- `core/bin-tokenizer/bin-tokenizer-test.cpp` -> cstdio, doctest.h, filesystem
+- `core/bin-tokenizer/bin-tokenizer.cpp` -> cstdint, cstdlib, cstring, stdexcept
+- `core/bin-tokenizer/bin-tokenizer.h` -> android/asset_manager.h, cstdint, string, vector
+- `core/cosine-distance-test.cpp` -> doctest.h, stdexcept
+- `core/cosine-distance.cpp` -> cmath, stdexcept
+- `core/cosine-distance.h` -> vector
+- `core/cpp-annote/src/annotation_support.h` -> algorithm, cmath, cstddef, map, stdexcept, utility, vector
+- `core/cpp-annote/src/clustering_vbx.cpp` -> algorithm, cmath, cstdint, limits, numeric, random, sstream, stdexcept
+- `core/cpp-annote/src/clustering_vbx.h` -> cstdint, vector
+- `core/cpp-annote/src/community1_cpp_annote_embedded.h` -> cstddef
+- `core/cpp-annote/src/community1_ort_embedded.h` -> cstddef
+- `core/cpp-annote/src/compute_fbank.cpp` -> algorithm, cmath, cstring, kaldi-native-fbank/csrc/online-feature.h
+- `core/cpp-annote/src/compute_fbank.h` -> cstdint, vector
+- `core/cpp-annote/src/cpp-annote-engine.h` -> cstdint, cstdio, iostream, memory, onnxruntime_cxx_api.h, string, vector
+- `core/cpp-annote/src/cpp-annote-streaming.cpp` -> algorithm, chrono, cmath, cstdint, cstdio, cstring, iostream, limits, map, utility, vector
+- `core/cpp-annote/src/cpp-annote-streaming.h` -> cstddef, cstdint, string, unordered_map, vector
+- `core/cpp-annote/src/cpp-annote.cpp` -> algorithm, cctype, chrono, climits, cmath, cstdint, cstdio, cstdlib, cstring, filesystem, fstream, iomanip, iostream, limits, map, numeric, regex, sstream, stdexcept
+- `core/cpp-annote/src/cpp-annote.h` -> cstdint, memory, string, vector
+- `core/cpp-annote/src/embedding_ort_infer.cpp` -> algorithm, array, cmath, cstring, vector
+- `core/cpp-annote/src/embedding_ort_infer.h` -> onnxruntime_cxx_api.h, string
+- `core/cpp-annote/src/filter_train.cpp` -> cmath, vector
+- `core/cpp-annote/src/filter_train.h` -> Eigen/Dense, cstdint, vector
+- `core/cpp-annote/src/hungarian.h` -> algorithm, cmath, limits, stdexcept, vector
+- `core/cpp-annote/src/parity_log.cpp` -> cstdio, cstdlib, cstring, filesystem, iostream
+- `core/cpp-annote/src/parity_log.h` -> cstddef, cstdint, string
+- `core/cpp-annote/src/plda_vbx.cpp` -> array, cmath, numbers, stdexcept
+- `core/cpp-annote/src/plda_vbx.h` -> Eigen/Dense, string, vector
+- `core/cpp-annote/src/scipy_linkage.cpp` -> algorithm, cmath, cstdint, limits, vector
+- `core/cpp-annote/src/scipy_linkage.h` -> cmath, cstddef, vector
+- `core/cpp-annote/src/wav_pcm_float32.h` -> algorithm, cmath, cstdint, fstream, stdexcept, string, vector
+- `core/embedding-model.h` -> cmath, string, vector
+- `core/gemma-embedding-model-test.cpp` -> cmath, doctest.h, filesystem, iostream
+- `core/gemma-embedding-model.cpp` -> algorithm, cmath, cstring, fcntl.h, sys/mman.h, sys/stat.h, unistd.h
+- `core/gemma-embedding-model.h` -> memory, mutex, onnxruntime_c_api.h, string, vector
+- `core/intent-recognizer-test.cpp` -> cmath, cstring, doctest.h, filesystem, iostream, map, set
+- `core/intent-recognizer.cpp` -> algorithm, limits, stdexcept
+- `core/intent-recognizer.h` -> cstdint, memory, mutex, string, utility, vector
+- `core/moonshine-c-api-memory-test.cpp` -> algorithm, cstdint, cstdlib, cstring, ctime, doctest.h, filesystem, fstream, iostream, process.h, random, string, unistd.h, utility, vector
+- `core/moonshine-c-api-test.cpp` -> algorithm, array, cmath, cstdlib, cstring, doctest.h, filesystem, fstream, optional, string, vector
+- `core/moonshine-c-api.cpp` -> algorithm, array, cassert, cctype, cerrno, chrono, cmath, cstdarg, cstddef, cstdint, cstdio, cstdlib, cstring, fcntl.h, filesystem, map, mutex, numeric, optional, string, transcriber.h, unordered_set, utility, vector
+- `core/moonshine-c-api.h` -> android/asset_manager.h, stddef.h, stdint.h
+- `core/moonshine-cpp-test.cpp` -> cinttypes, doctest.h, filesystem, fstream
+- `core/moonshine-cpp.h` -> algorithm, cinttypes, cstring, functional, memory, stdexcept, string, vector
+- `core/moonshine-download-smoke.cpp` -> cmath, cstdint, cstdio, cstdlib, cstring, filesystem, iostream, nlohmann/json.h, string, vector
+- `core/moonshine-model-catalog.cpp` -> algorithm, cctype
+- `core/moonshine-model-catalog.h` -> cstdint, optional, string, vector
+- `core/moonshine-model.cpp` -> algorithm, array, cassert, cctype, cerrno, chrono, cmath, cstdarg, cstddef, cstdint, cstdio, cstdlib, cstring, fcntl.h, map, numeric, sys/mman.h, sys/stat.h, unistd.h, vector
+- `core/moonshine-model.h` -> mutex, onnxruntime_c_api.h, stddef.h, stdint.h, string, vector
+- `core/moonshine-streaming-model.cpp` -> algorithm, cassert, cmath, cstdio, cstdlib, cstring, fcntl.h, fstream, sstream, sys/mman.h, sys/stat.h, unistd.h
+- `core/moonshine-streaming-model.h` -> mutex, onnxruntime_c_api.h, stddef.h, stdint.h, string, vector
+- `core/moonshine-tts/src/constants.h` -> string_view
+- `core/moonshine-tts/src/file-information.cpp` -> fstream, stdexcept
+- `core/moonshine-tts/src/file-information.h` -> cstddef, cstdint, filesystem, map, string, string_view, utility, vector
+- `core/moonshine-tts/src/g2p-path.h` -> filesystem, string, string_view
+- `core/moonshine-tts/src/g2p-word-log.cpp` -> sstream
+- `core/moonshine-tts/src/g2p-word-log.h` -> string, vector
+- `core/moonshine-tts/src/ipa-postprocess.cpp` -> algorithm, cctype, cstddef, cstdlib, string_view, unordered_map, utf8proc.h, vector
+- `core/moonshine-tts/src/ipa-postprocess.h` -> optional, string, string_view, unordered_set, vector
+- `core/moonshine-tts/src/json-config.cpp` -> fstream, nlohmann/json.h, stdexcept
+- `core/moonshine-tts/src/json-config.h` -> cstdint, filesystem, nlohmann/json.h, string, string_view, unordered_map, vector
+- `core/moonshine-tts/src/lang-specific/arabic-diac-onnx.cpp` -> array, cctype, cstdint, filesystem, fstream, istream, memory, nlohmann/json.h, onnxruntime_cxx_api.h, optional, sstream, stdexcept, string, string_view, unordered_map, utf8proc.h, vector
+- `core/moonshine-tts/src/lang-specific/arabic-diac-onnx.h` -> cstdint, filesystem, memory, onnxruntime_cxx_api.h, string, string_view, unordered_map, vector
+- `core/moonshine-tts/src/lang-specific/arabic-ipa.cpp` -> cctype, string, unordered_set, utf8proc.h, utility, vector
+- `core/moonshine-tts/src/lang-specific/arabic-ipa.h` -> string, string_view
+- `core/moonshine-tts/src/lang-specific/arabic.cpp` -> algorithm, cctype, fstream, istream, sstream, stdexcept
+- `core/moonshine-tts/src/lang-specific/arabic.h` -> filesystem, memory, string, string_view, unordered_map, vector
+- `core/moonshine-tts/src/lang-specific/chinese-numbers.cpp` -> cstdint, limits, stdexcept, string, string_view, vector
+- `core/moonshine-tts/src/lang-specific/chinese-numbers.h` -> cstdint, optional, string
+- `core/moonshine-tts/src/lang-specific/chinese-onnx-g2p.cpp` -> utf8proc.h, utility
+- `core/moonshine-tts/src/lang-specific/chinese-onnx-g2p.h` -> filesystem, memory, string, vector
+- `core/moonshine-tts/src/lang-specific/chinese-tok-pos-onnx.cpp` -> algorithm, array, cctype, cmath, cstdint, fstream, limits, nlohmann/json.h, optional, sstream, stdexcept, unordered_map, unordered_set, utf8proc.h
+- `core/moonshine-tts/src/lang-specific/chinese-tok-pos-onnx.h` -> cstdint, filesystem, memory, onnxruntime_cxx_api.h, string, string_view, utility, vector
+- `core/moonshine-tts/src/lang-specific/chinese.cpp` -> cctype, cstdint, fstream, istream, sstream, stdexcept, string, string_view, unordered_map, unordered_set, utility
+- `core/moonshine-tts/src/lang-specific/chinese.h` -> filesystem, string, string_view, unordered_map, vector
+- `core/moonshine-tts/src/lang-specific/cmudict-tsv.cpp` -> fstream, istream, set, sstream
+- `core/moonshine-tts/src/lang-specific/cmudict-tsv.h` -> filesystem, string, string_view, unordered_map, vector
+- `core/moonshine-tts/src/lang-specific/dutch.cpp` -> algorithm, array, cctype, cstdint, cstring, fstream, istream, sstream, stdexcept, string, string_view, unordered_map, utility, vector
+- `core/moonshine-tts/src/lang-specific/dutch.h` -> filesystem, string, unordered_map, utility, vector
+- `core/moonshine-tts/src/lang-specific/english-hand-oov.cpp` -> cctype, cstring, string, string_view, unordered_map, utility
+- `core/moonshine-tts/src/lang-specific/english-hand-oov.h` -> string, string_view
+- `core/moonshine-tts/src/lang-specific/english-numbers.cpp` -> algorithm, cctype, string, vector
+- `core/moonshine-tts/src/lang-specific/english-numbers.h` -> optional, string, string_view
+- `core/moonshine-tts/src/lang-specific/english.cpp` -> algorithm, cctype, filesystem, nlohmann/json.h, optional, sstream, stdexcept, vector
+- `core/moonshine-tts/src/lang-specific/english.h` -> cstdint, filesystem, memory, optional, string, string_view, vector
+- `core/moonshine-tts/src/lang-specific/french-compound-map.h` -> string, unordered_map
+- `core/moonshine-tts/src/lang-specific/french-internal.h` -> string
+- `core/moonshine-tts/src/lang-specific/french-oov.cpp` -> cctype, string, unordered_map, vector
+- `core/moonshine-tts/src/lang-specific/french.cpp` -> algorithm, array, cctype, fstream, istream, regex, sstream, stdexcept, string, string_view, utility, vector
+- `core/moonshine-tts/src/lang-specific/french.h` -> filesystem, string, unordered_map, unordered_set, utility, vector
+- `core/moonshine-tts/src/lang-specific/german.cpp` -> algorithm, cctype, fstream, istream, regex, sstream, stdexcept, string, string_view, utility, vector
+- `core/moonshine-tts/src/lang-specific/german.h` -> filesystem, string, unordered_map, utility, vector
+- `core/moonshine-tts/src/lang-specific/heteronym-context.cpp` -> algorithm, cmath, string, vector
+- `core/moonshine-tts/src/lang-specific/heteronym-context.h` -> optional, string, tuple, vector
+- `core/moonshine-tts/src/lang-specific/hindi-numbers.cpp` -> cctype, cstdlib, regex, string, vector
+- `core/moonshine-tts/src/lang-specific/hindi-numbers.h` -> string, string_view
+- `core/moonshine-tts/src/lang-specific/hindi.cpp` -> cctype, filesystem, fstream, istream, optional, sstream, string, string_view, unordered_map, utf8proc.h, vector
+- `core/moonshine-tts/src/lang-specific/hindi.h` -> filesystem, string, string_view, unordered_map, utility, vector
+- `core/moonshine-tts/src/lang-specific/ipa-symbols.h` -> string
+- `core/moonshine-tts/src/lang-specific/italian.cpp` -> algorithm, cctype, clocale, cstdint, cwctype, fstream, istream, limits, regex, sstream, stdexcept, string, string_view, unordered_map, utility, vector
+- `core/moonshine-tts/src/lang-specific/italian.h` -> filesystem, string, unordered_map, utility, vector
+- `core/moonshine-tts/src/lang-specific/japanese-kana-to-ipa.cpp` -> cctype, optional, string, tuple, utf8proc.h, utility, vector
+- `core/moonshine-tts/src/lang-specific/japanese-kana-to-ipa.h` -> string, string_view
+- `core/moonshine-tts/src/lang-specific/japanese-onnx-g2p.cpp` -> algorithm, fstream, istream, sstream, stdexcept, utf8proc.h, utility, vector
+- `core/moonshine-tts/src/lang-specific/japanese-onnx-g2p.h` -> filesystem, string, unordered_map, vector
+- `core/moonshine-tts/src/lang-specific/japanese-tok-pos-onnx.cpp` -> algorithm, array, cctype, cmath, cstdint, fstream, limits, nlohmann/json.h, optional, sstream, stdexcept, unordered_map, unordered_set, utf8proc.h
+- `core/moonshine-tts/src/lang-specific/japanese-tok-pos-onnx.h` -> cstdint, filesystem, memory, onnxruntime_cxx_api.h, string, string_view, utility, vector
+- `core/moonshine-tts/src/lang-specific/japanese.cpp` -> cctype, utility
+- `core/moonshine-tts/src/lang-specific/japanese.h` -> filesystem, memory, string, string_view, vector
+- `core/moonshine-tts/src/lang-specific/korean-numbers.cpp` -> cctype, cstring, limits, optional, string, string_view, vector
+- `core/moonshine-tts/src/lang-specific/korean-numbers.h` -> cstdint, optional, string, vector
+- `core/moonshine-tts/src/lang-specific/korean-tok-pos-onnx.cpp` -> algorithm, array, cctype, cmath, cstdint, fstream, limits, nlohmann/json.h, optional, sstream, stdexcept, unordered_map, unordered_set, utf8proc.h
+- `core/moonshine-tts/src/lang-specific/korean-tok-pos-onnx.h` -> cstdint, filesystem, memory, onnxruntime_cxx_api.h, string, string_view, utility, vector
+- `core/moonshine-tts/src/lang-specific/korean.cpp` -> cctype, cstdlib, fstream, istream, limits, optional, sstream, stdexcept, string, utf8proc.h, utility, vector
+- `core/moonshine-tts/src/lang-specific/korean.h` -> filesystem, string, string_view, unordered_map, utility, vector
+- `core/moonshine-tts/src/lang-specific/onnx-g2p-models.cpp` -> array, cstddef, filesystem, nlohmann/json.h, stdexcept, string, unordered_map, vector
+- `core/moonshine-tts/src/lang-specific/onnx-g2p-models.h` -> cstddef, filesystem, memory, nlohmann/json.h, onnxruntime_cxx_api.h, string, vector
+- `core/moonshine-tts/src/lang-specific/portuguese-rules.cpp` -> algorithm, cctype, cstdint, optional, string, string_view, unordered_map, unordered_set, utility, vector
+- `core/moonshine-tts/src/lang-specific/portuguese-rules.h` -> cstdint, optional, string, unordered_map
+- `core/moonshine-tts/src/lang-specific/portuguese.cpp` -> algorithm, cctype, clocale, cstdint, cwctype, fstream, istream, limits, optional, regex, sstream, stdexcept, string, string_view, unordered_map, unordered_set, utility, vector
+- `core/moonshine-tts/src/lang-specific/portuguese.h` -> filesystem, string, unordered_map, utility, vector
+- `core/moonshine-tts/src/lang-specific/russian-numbers.cpp` -> regex, stdexcept, string, string_view, vector
+- `core/moonshine-tts/src/lang-specific/russian.cpp` -> algorithm, cctype, cstdint, cwctype, fstream, istream, limits, regex, sstream, stdexcept, string, string_view, unordered_map, unordered_set, utility, vector
+- `core/moonshine-tts/src/lang-specific/russian.h` -> filesystem, string, unordered_map, utility, vector
+- `core/moonshine-tts/src/lang-specific/spanish-numbers.cpp` -> regex, stdexcept, string, string_view, vector
+- `core/moonshine-tts/src/lang-specific/spanish-unicode-tables.h` -> cstddef, cstdint, utility
+- `core/moonshine-tts/src/lang-specific/spanish-unicode.cpp` -> algorithm, string
+- `core/moonshine-tts/src/lang-specific/spanish-unicode.h` -> cstdint, string
+- `core/moonshine-tts/src/lang-specific/spanish.cpp` -> algorithm, cctype, cstdint, regex, stdexcept, string, unordered_map, utility, vector
+- `core/moonshine-tts/src/lang-specific/spanish.h` -> string, vector
+- `core/moonshine-tts/src/lang-specific/turkish.cpp` -> cctype, cstdlib, optional, regex, string, string_view, utf8proc.h, vector
+- `core/moonshine-tts/src/lang-specific/turkish.h` -> string, vector
+- `core/moonshine-tts/src/lang-specific/ukrainian.cpp` -> cctype, cstdlib, optional, regex, string, string_view, unordered_set, utf8proc.h, vector
+- `core/moonshine-tts/src/lang-specific/ukrainian.h` -> string, vector
+- `core/moonshine-tts/src/lang-specific/vietnamese.cpp` -> cctype, cstring, fstream, istream, sstream, stdexcept, unordered_map, utf8proc.h, utility, vector
+- `core/moonshine-tts/src/lang-specific/vietnamese.h` -> filesystem, string, unordered_map, vector
+- `core/moonshine-tts/src/moonshine-asset-catalog.cpp` -> algorithm, filesystem, optional, unordered_map, unordered_set
+- `core/moonshine-tts/src/moonshine-asset-catalog.h` -> optional, string, string_view, vector
+- `core/moonshine-tts/src/moonshine-g2p-options.cpp` -> filesystem, unordered_set
+- `core/moonshine-tts/src/moonshine-g2p-options.h` -> cstdint, filesystem, optional, string, string_view, utility, vector
+- `core/moonshine-tts/src/moonshine-g2p.cpp` -> cctype, stdexcept
+- `core/moonshine-tts/src/moonshine-g2p.h` -> memory, optional, string, string_view, vector
+- `core/moonshine-tts/src/moonshine-tts-options.cpp` -> algorithm, cmath, stdexcept, string_view
+- `core/moonshine-tts/src/moonshine-tts-options.h` -> filesystem, optional, string, string_view, utility, vector
+- `core/moonshine-tts/src/moonshine-tts.cpp` -> algorithm, array, cctype, cmath, cstdlib, cstring, fstream, map, mutex, nlohmann/json.h, onnxruntime_cxx_api.h, optional, sstream, stdexcept, string, unordered_map, unordered_set, utf8proc.h
+- `core/moonshine-tts/src/moonshine-tts.h` -> cstdint, filesystem, memory, string, string_view, utility, vector
+- `core/moonshine-tts/src/ort-onnx-external-data.cpp` -> cstdint, filesystem, string, vector
+- `core/moonshine-tts/src/ort-onnx-external-data.h` -> onnxruntime_cxx_api.h, string_view
+- `core/moonshine-tts/src/ort-session-options.h` -> onnxruntime_cxx_api.h, string, vector
+- `core/moonshine-tts/src/piper-tts.cpp` -> algorithm, array, cmath, cstdlib, filesystem, fstream, map, nlohmann/json.h, onnxruntime_cxx_api.h, stdexcept, unordered_map, unordered_set, utf8proc.h
+- `core/moonshine-tts/src/piper-tts.h` -> cstdint, filesystem, memory, optional, string, string_view, vector
+- `core/moonshine-tts/src/piper-voice-catalog.cpp` -> unordered_map
+- `core/moonshine-tts/src/piper-voice-catalog.h` -> string, vector
+- `core/moonshine-tts/src/rule-based-g2p-factory.cpp` -> cctype, filesystem, fstream, nlohmann/json.h, optional, sstream, stdexcept, string, string_view, unordered_map, utility
+- `core/moonshine-tts/src/rule-based-g2p-factory.h` -> memory, optional, string, string_view, vector
+- `core/moonshine-tts/src/rule-based-g2p.h` -> string, vector
+- `core/moonshine-tts/src/text-normalize.cpp` -> cctype
+- `core/moonshine-tts/src/text-normalize.h` -> string, vector
+- `core/moonshine-tts/src/utf8-utils.cpp` -> unordered_set
+- `core/moonshine-tts/src/utf8-utils.h` -> cctype, cstdint, optional, string, string_view, utility, vector
+- `core/moonshine-tts/src/zipvoice-custom-ops.cpp` -> algorithm, cmath, cstddef, vector
+- `core/moonshine-tts/src/zipvoice-custom-ops.h` -> onnxruntime_cxx_api.h
+- `core/moonshine-tts/src/zipvoice-mel.cpp` -> cmath, cstddef
+- `core/moonshine-tts/src/zipvoice-mel.h` -> cstddef, cstdint, vector
+- `core/moonshine-tts/src/zipvoice-tts.cpp` -> algorithm, array, cmath, cstdint, fstream, nlohmann/json.h, onnxruntime_cxx_api.h, random, stdexcept, string, unordered_map, unordered_set, vector
+- `core/moonshine-tts/src/zipvoice-tts.h` -> cstdint, memory, string, string_view, vector
+- `core/moonshine-tts/src/zipvoice-voices.cpp` -> cstring
+- `core/moonshine-tts/src/zipvoice-voices.h` -> cstddef, cstdint, string_view, vector
+- `core/moonshine-tts/tests/arabic-rule-g2p-test.cpp` -> doctest/doctest.h
+- `core/moonshine-tts/tests/chinese-rule-g2p-test.cpp` -> chrono, doctest/doctest.h, filesystem, fstream, string
+- `core/moonshine-tts/tests/chinese-tok-pos-onnx-test.cpp` -> doctest/doctest.h
+- `core/moonshine-tts/tests/cmudict-tsv-test.cpp` -> doctest/doctest.h, filesystem, fstream
+- `core/moonshine-tts/tests/dutch-rule-g2p-test.cpp` -> chrono, doctest/doctest.h, filesystem, fstream, string, vector
+- `core/moonshine-tts/tests/english-hand-oov-test.cpp` -> doctest/doctest.h, string
+- `core/moonshine-tts/tests/english-rule-g2p-test.cpp` -> doctest/doctest.h, filesystem, string, vector
+- `core/moonshine-tts/tests/file-information-test.cpp` -> doctest/doctest.h, vector
+- `core/moonshine-tts/tests/french-rule-g2p-test.cpp` -> doctest/doctest.h, filesystem, fstream, string, vector
+- `core/moonshine-tts/tests/german-rule-g2p-test.cpp` -> chrono, doctest/doctest.h, filesystem, fstream, string, vector
+- `core/moonshine-tts/tests/heteronym-context-test.cpp` -> doctest/doctest.h
+- `core/moonshine-tts/tests/hindi-rule-g2p-test.cpp` -> algorithm, doctest/doctest.h, filesystem, string, vector
+- `core/moonshine-tts/tests/ipa-postprocess-test.cpp` -> doctest/doctest.h, unordered_set
+- `core/moonshine-tts/tests/italian-rule-g2p-test.cpp` -> chrono, doctest/doctest.h, filesystem, fstream, string, vector
+- `core/moonshine-tts/tests/japanese-onnx-g2p-test.cpp` -> doctest/doctest.h
+- `core/moonshine-tts/tests/japanese-tok-pos-onnx-test.cpp` -> doctest/doctest.h
+- `core/moonshine-tts/tests/json-config-test.cpp` -> doctest/doctest.h, filesystem, fstream
+- `core/moonshine-tts/tests/korean-rule-g2p-test.cpp` -> doctest/doctest.h, filesystem, string
+- `core/moonshine-tts/tests/korean-tok-pos-onnx-test.cpp` -> doctest/doctest.h
+- `core/moonshine-tts/tests/moonshine-g2p-options-test.cpp` -> doctest/doctest.h, filesystem, string, utility, vector
+- `core/moonshine-tts/tests/moonshine-tts-options-test.cpp` -> doctest/doctest.h, string, utility, vector
+- `core/moonshine-tts/tests/moonshine-tts-speed-test.cpp` -> doctest/doctest.h, filesystem
+- `core/moonshine-tts/tests/onnx-g2p-smoke-test.cpp` -> cstdlib, doctest/doctest.h, filesystem
+- `core/moonshine-tts/tests/portuguese-rule-g2p-test.cpp` -> chrono, doctest/doctest.h, filesystem, fstream, string, vector
+- `core/moonshine-tts/tests/rule-g2p-test-support.h` -> cstddef, filesystem, fstream, iterator, sstream, string, vector
+- `core/moonshine-tts/tests/russian-rule-g2p-test.cpp` -> chrono, doctest/doctest.h, filesystem, fstream, string, vector
+- `core/moonshine-tts/tests/spanish-rule-g2p-test.cpp` -> algorithm, doctest/doctest.h, filesystem, string, vector
+- `core/moonshine-tts/tests/text-normalize-test.cpp` -> doctest/doctest.h
+- `core/moonshine-tts/tests/turkish-rule-g2p-test.cpp` -> algorithm, doctest/doctest.h, filesystem, string, vector
+- `core/moonshine-tts/tests/ukrainian-rule-g2p-test.cpp` -> algorithm, doctest/doctest.h, filesystem, string, vector
+- `core/moonshine-tts/tests/utf8-utils-test.cpp` -> doctest/doctest.h
+- `core/moonshine-tts/tests/vietnamese-rule-g2p-test.cpp` -> doctest/doctest.h, filesystem, string
+- `core/moonshine-tts/tests/zipvoice-tts-test.cpp` -> cmath, doctest.h, string, vector
+- `core/moonshine-tts/tools/arabic-rule-g2p-cli.cpp` -> filesystem, iostream, sstream, string, vector
+- `core/moonshine-tts/tools/chinese-rule-g2p-cli.cpp` -> filesystem, iostream, sstream, string, vector
+- `core/moonshine-tts/tools/dutch-g2p-batch-cli.cpp` -> cctype, filesystem, iostream, sstream, string, vector
+- `core/moonshine-tts/tools/dutch-rule-g2p-cli.cpp` -> filesystem, iostream, sstream, string, vector
+- `core/moonshine-tts/tools/french-g2p-batch-cli.cpp` -> cctype, filesystem, iostream, sstream, string, vector
+- `core/moonshine-tts/tools/german-rule-g2p-cli.cpp` -> filesystem, iostream, sstream, string, vector
+- `core/moonshine-tts/tools/hindi-rule-g2p-cli.cpp` -> filesystem, iostream, sstream, string, vector
+- `core/moonshine-tts/tools/italian-rule-g2p-cli.cpp` -> filesystem, iostream, sstream, string, vector
+- `core/moonshine-tts/tools/japanese-onnx-g2p-cli.cpp` -> filesystem, iostream, sstream, string, vector
+- `core/moonshine-tts/tools/korean-rule-g2p-cli.cpp` -> filesystem, iostream, sstream, string, vector
+- `core/moonshine-tts/tools/moonshine-g2p-cli.cpp` -> cstdlib, cstring, filesystem, iostream, sstream, string, vector
+- `core/moonshine-tts/tools/moonshine-tts-cli.cpp` -> cstdlib, filesystem, iostream, optional, string, utility, vector
+- `core/moonshine-tts/tools/piper-ipa-normalize-cli.cpp` -> fstream, iostream, nlohmann/json.h, string, string_view, unordered_set
+- `core/moonshine-tts/tools/piper-phoneme-infer-cli.cpp` -> cstdlib, filesystem, fstream, iostream, nlohmann/json.h, optional, string, vector
+- `core/moonshine-tts/tools/portuguese-rule-g2p-cli.cpp` -> filesystem, iostream, sstream, string, vector
+- `core/moonshine-tts/tools/vietnamese-rule-g2p-cli.cpp` -> filesystem, iostream, sstream, string, vector
+- `core/moonshine-utils/debug-utils-test.cpp` -> cstdio, doctest.h, filesystem
+- `core/moonshine-utils/debug-utils.cpp` -> algorithm, cmath, cstdio, cstring, cxxabi.h, execinfo.h, fcntl.h, numeric
+- `core/moonshine-utils/debug-utils.h` -> android/asset_manager.h, android/log.h, chrono, cinttypes, cstring, sstream, string, thread, vector
+- `core/moonshine-utils/file-utils-test.cpp` -> cstdint, cstdio, cstring, doctest.h, stdexcept, vector
+- `core/moonshine-utils/file-utils.cpp` -> cstdio, sstream, stdexcept, string
+- `core/moonshine-utils/file-utils.h` -> cstddef, cstdio
+- `core/moonshine-utils/string-utils-test.cpp` -> cstdio, doctest.h
+- `core/moonshine-utils/string-utils.cpp` -> algorithm, cstdio, stdexcept
+- `core/moonshine-utils/string-utils.h` -> cstdint, map, string, vector
+- `core/moonshine-utils/test-utils.h` -> filesystem
+- `core/ort-utils/moonshine-ort-allocator.h` -> map, onnxruntime_c_api.h
+- `core/ort-utils/moonshine-tensor-view.cpp` -> cstdint, cstdlib, cstring, list
+- `core/ort-utils/moonshine-tensor-view.h` -> cassert, numeric, onnxruntime_c_api.h, stdint.h, string, vector
+- `core/ort-utils/moonshine-tensor.h` -> stddef.h, stdint.h
+- `core/ort-utils/ort-utils-cxx.h` -> onnxruntime_cxx_api.h
+- `core/ort-utils/ort-utils-ep-test.cpp` -> doctest.h, filesystem, string
+- `core/ort-utils/ort-utils-ep.cpp` -> algorithm, cctype, cpu_provider_factory.h, cstring, nnapi_provider_factory.h, sstream, string, vector
+- `core/ort-utils/ort-utils-test.cpp` -> doctest.h
+- `core/ort-utils/ort-utils.cpp` -> cstdlib, cstring, fcntl.h, filesystem, onnxruntime_c_api.h, sys/mman.h, sys/stat.h, unistd.h
+- `core/ort-utils/ort-utils.h` -> android/asset_manager.h, filesystem, onnxruntime_c_api.h, string, vector
+- `core/reliability/fuzz-bin-tokenizer.cpp` -> algorithm, cstddef, cstdint, exception, string, vector
+- `core/reliability/fuzz-resampler.cpp` -> cmath, cstddef, cstdint, cstring, vector
+- `core/reliability/fuzz-string-utils.cpp` -> cstddef, cstdint, exception, string
+- `core/reliability/fuzz-tensor-view.cpp` -> cstddef, cstdint, exception, vector
+- `core/reliability/fuzz-wav-pcm.cpp` -> cstddef, cstdint, cstdlib, exception, string, unistd.h
+- `core/resampler-test.cpp` -> doctest.h, filesystem, numeric, string
+- `core/resampler.h` -> vector
+- `core/silero-vad.cpp` -> silero-vad-model-data.h
+- `core/silero-vad.h` -> chrono, cmath, cstdarg, cstdio, cstring, iomanip, iostream, limits, memory, onnxruntime_c_api.h, sstream, stdexcept, string, vector
+- `core/speaker-diarizer.cpp` -> algorithm, map, mutex, random, stdexcept, utility
+- `core/speaker-diarizer.h` -> cstdint, memory, vector
+- `core/spelling-fusion-data.cpp` -> algorithm
+- `core/spelling-fusion-data.h` -> string, unordered_map, unordered_set, vector
+- `core/spelling-fusion-test.cpp` -> doctest.h, string
+- `core/spelling-fusion.cpp` -> algorithm, array, cctype, cstdint, cstring, sstream, string
+- `core/spelling-fusion.h` -> optional, string, unordered_map, unordered_set, vector
+- `core/spelling-model-test.cpp` -> cstdio, doctest.h, filesystem, fstream, string, vector
+- `core/spelling-model.cpp` -> algorithm, cmath, cstring, limits, stdexcept, sys/mman.h, sys/stat.h, unistd.h, vector
+- `core/spelling-model.h` -> mutex, onnxruntime_c_api.h, stddef.h, stdint.h, string, vector
+- `core/tts-repeated-memory-test.cpp` -> algorithm, cstdint, cstdio, cstdlib, cstring, doctest.h, filesystem, functional, mach/mach.h, optional, string, vector
+- `core/voice-activity-detector-test.cpp` -> doctest.h, filesystem, string
+- `core/voice-activity-detector.cpp` -> cassert, mutex, numeric
+- `core/voice-activity-detector.h` -> string, vector
+- `core/word-alignment-benchmark.cpp` -> chrono, cstdio, cstdlib, cstring, vector
+- `core/word-alignment-test.cpp` -> cstdio, cstdlib, doctest.h, filesystem, string
+- `core/word-alignment.cpp` -> algorithm, cmath, cstring, limits, numeric, vector
+- `core/word-alignment.h` -> string, vector
+- `examples/android/IntentRecognizer/app/src/main/java/ai/moonshine/examples/intentrecognizer/AssetDirectoryCopy.kt` -> android.content.Context, java.io.File, java.io.FileOutputStream
+- `examples/android/IntentRecognizer/app/src/main/java/ai/moonshine/examples/intentrecognizer/MainActivity.kt` -> ai.moonshine.examples.intentrecognizer.databinding.ActivityMainBinding, ai.moonshine.voice.IntentRecognizer, ai.moonshine.voice.MicTranscriber, ai.moonshine.voice.TranscriptEventListener, android.Manifest, android.content.pm.PackageManager, android.os.Bundle, android.os.Handler, android.os.Looper, androidx.activity.result.contract.ActivityResultContracts, androidx.appcompat.app.AppCompatActivity, androidx.core.content.ContextCompat, androidx.recyclerview.widget.LinearLayoutManager, java.io.File
+- `examples/android/IntentRecognizer/app/src/main/java/ai/moonshine/examples/intentrecognizer/PhraseAdapter.kt` -> ai.moonshine.examples.intentrecognizer.databinding.ItemPhraseRowBinding, android.graphics.Color, android.os.Handler, android.os.Looper, android.text.Editable, android.text.TextWatcher, android.view.LayoutInflater, android.view.ViewGroup, androidx.core.content.ContextCompat, androidx.recyclerview.widget.RecyclerView
+- `examples/android/TextToSpeech/app/src/main/java/ai/moonshine/examples/texttospeech/AssetDirectoryCopy.kt` -> android.content.Context, java.io.File, java.io.FileOutputStream
+- `examples/android/TextToSpeech/app/src/main/java/ai/moonshine/examples/texttospeech/MainActivity.kt` -> ai.moonshine.examples.texttospeech.databinding.ActivityMainBinding, ai.moonshine.voice.AssetDownloader, ai.moonshine.voice.TextToSpeech, android.media.AudioAttributes, android.media.AudioFormat, android.media.AudioTrack, android.os.Bundle, android.os.Handler, android.os.Looper, android.text.Editable, android.text.TextWatcher, android.view.View, android.widget.AdapterView, android.widget.ArrayAdapter, androidx.appcompat.app.AppCompatActivity, java.io.File, kotlin.concurrent.thread, org.json.JSONArray, org.json.JSONObject
+- `examples/android/Transcriber/app/src/main/java/ai/moonshine/androidtranscriber/MainActivity.java` -> ai.moonshine.voice.MicTranscriber, ai.moonshine.voice.TranscriptEventListener, android.Manifest, android.content.pm.PackageManager, android.os.Bundle, android.widget.TextView, androidx.activity.result.ActivityResultLauncher, androidx.activity.result.contract.ActivityResultContracts, androidx.annotation.NonNull, androidx.appcompat.app.AppCompatActivity, androidx.core.content.ContextCompat
+- `examples/ios/IntentRecognizer/IntentRecognizer/ContentView.swift` -> SwiftUI, UIKit
+- `examples/ios/IntentRecognizer/IntentRecognizer/IntentRecognizerApp.swift` -> SwiftUI
+- `examples/ios/IntentRecognizer/IntentRecognizer/IntentSessionModel.swift` -> Foundation, MoonshineVoice, SwiftUI
+- `examples/ios/IntentRecognizer/IntentRecognizer/IntentTranscriptBridge.swift` -> Foundation, MoonshineVoice
+- `examples/ios/TextToSpeech/TextToSpeech/ContentView.swift` -> MoonshineVoice, SwiftUI
+- `examples/ios/TextToSpeech/TextToSpeech/TextToSpeechApp.swift` -> AVFoundation, MoonshineVoice, SwiftUI
+- `examples/ios/Transcriber/Transcriber/ContentView.swift` -> MoonshineVoice, SwiftUI
+- `examples/ios/Transcriber/Transcriber/TranscriberApp.swift` -> MoonshineVoice, SwiftUI
+- `examples/ios/Transcriber/TranscriberTests/TranscriberTests.swift` -> Testing
+- `examples/ios/Transcriber/TranscriberUITests/TranscriberUITests.swift` -> XCTest
+- `examples/ios/Transcriber/TranscriberUITests/TranscriberUITestsLaunchTests.swift` -> XCTest
+- `examples/macos/BasicTranscription/Package.swift` -> PackageDescription
+- `examples/macos/BasicTranscription/Sources/BasicTranscription/main.swift` -> Foundation, MoonshineVoice
+- `examples/macos/MicTranscription/Package.swift` -> PackageDescription
+- `examples/macos/MicTranscription/Sources/MicTranscription/main.swift` -> Foundation, MoonshineVoice
+- `examples/macos/TextToSpeech/Package.swift` -> PackageDescription
+- `examples/macos/TextToSpeech/Sources/TextToSpeech/main.swift` -> AVFoundation, Foundation, MoonshineVoice
+- `examples/python/basic_transcription.py` -> argparse, moonshine_voice, os, typing
+- `examples/python/dialog_flow.py` -> argparse, moonshine_voice, moonshine_voice.transcriber, moonshine_voice.tts, sys, time, typing
+- `examples/python/intent_recognition.py` -> argparse, moonshine_voice, sys, time
+- `examples/python/mic_transcription.py` -> argparse, moonshine_voice, sys, time
+- `examples/python/ollama-voice/ollama_voice.py` -> argparse, moonshine_voice, ollama, time
+- `examples/raspberry-pi/my-dalek/my-dalek.py` -> argparse, moonshine_voice, sys, time
+- `examples/windows/cli-transcriber/cli-transcriber.cpp` -> Windows.h, algorithm, atomic, audioclient.h, cstdio, cstring, iostream, memory, mmdeviceapi.h, mutex, string, thread, vector
+- `micro/examples/rp2350/generated/model_data.h` -> cstdint
+- `micro/examples/rp2350/generated/neural_tts_demo_data.h` -> cstdint
+- `micro/examples/rp2350/generated/speaker_test_clips.h` -> cstdint
+- `micro/examples/rp2350/generated/test_clips.h` -> cstdint
+- `micro/examples/rp2350/generated/vad_model_data.h` -> cstdint
+- `micro/examples/rp2350/scripts/capture_neural_tts.py` -> __future__, argparse, glob, pathlib, serial, struct, sys, time, wave
+- `micro/examples/rp2350/scripts/capture_stt.py` -> __future__, argparse, glob, os, termios, time, tty, wave
+- `micro/examples/rp2350/scripts/generate_speaker_test_clips.py` -> __future__, pathlib, struct, sys, wave
+- `micro/examples/rp2350/scripts/tts_speak.py` -> argparse, glob, serial, sys, time, wave
+- `micro/examples/rp2350/scripts/usb_audio_bridge.py` -> __future__, argparse, glob, numpy, os, queue, select, signal, sounddevice, soundfile, sys, termios, threading, time, tty
+- `micro/examples/rp2350/src/app_common.cc` -> cstdint, cstdio, hardware/clocks.h, hardware/vreg.h, pico/stdlib.h
+- `micro/examples/rp2350/src/app_common.h` -> cstddef, cstdint
+- `micro/examples/rp2350/src/audio_io.h` -> cstdint
+- `micro/examples/rp2350/src/audio_service.cc` -> algorithm, cmath, cstdio, cstring, optional, pico/stdlib.h
+- `micro/examples/rp2350/src/audio_service.h` -> cstddef, cstdint
+- `micro/examples/rp2350/src/echo_app.cc` -> cstdio, kiss_fftr.h
+- `micro/examples/rp2350/src/echo_hardware_app.cc` -> cstdio, kiss_fftr.h
+- `micro/examples/rp2350/src/i2s_audio_io.cc` -> cstdint, hardware/dma.h, hardware/pio.h, i2s_mic.pio.h, pico/stdlib.h
+- `micro/examples/rp2350/src/i2s_audio_out.cc` -> cmath, cstdint, cstring, hardware/dma.h, hardware/pio.h, i2s_out.pio.h, pico/stdlib.h
+- `micro/examples/rp2350/src/i2s_audio_out.h` -> cstdint, hardware/pio.h
+- `micro/examples/rp2350/src/i2s_mic_process.cc` -> algorithm, cmath
+- `micro/examples/rp2350/src/i2s_mic_process.h` -> cstdint
+- `micro/examples/rp2350/src/main_audio_loopback_test.cc` -> cstdint, cstdio, hardware/clocks.h, hardware/vreg.h, pico/stdlib.h
+- `micro/examples/rp2350/src/main_i2s_audio_test.cc` -> cmath, cstddef, cstdint, cstdio, hardware/clocks.h, hardware/vreg.h, hardware/watchdog.h, pico/stdlib.h
+- `micro/examples/rp2350/src/main_i2s_mic_test.cc` -> algorithm, cmath, cstdint, cstdio, cstring, hardware/clocks.h, hardware/pio.h, hardware/vreg.h, i2s_mic.pio.h, pico/stdlib.h
+- `micro/examples/rp2350/src/main_i2s_relay.cc` -> cstdint, cstdio, cstdlib, cstring, hardware/clocks.h, hardware/vreg.h, hardware/watchdog.h, pico/stdlib.h
+- `micro/examples/rp2350/src/main_step1_blinky.cc` -> pico/stdlib.h
+- `micro/examples/rp2350/src/main_step1_blinky_w.cc` -> pico/cyw43_arch.h, pico/stdlib.h
+- `micro/examples/rp2350/src/main_step2_printf.cc` -> cstdio, pico/cyw43_arch.h, pico/stdlib.h
+- `micro/examples/rp2350/src/main_step3_fft.cc` -> cstdio, cstdlib, kiss_fftr.h, pico/cyw43_arch.h, pico/stdlib.h
+- `micro/examples/rp2350/src/main_step5_synth.cc` -> cstdio, pico/cyw43_arch.h, pico/stdlib.h
+- `micro/examples/rp2350/src/main_step6_decoder.cc` -> cstdio, hardware/clocks.h, hardware/structs/qmi.h, hardware/vreg.h, pico/cyw43_arch.h, pico/stdlib.h, pico/time.h
+- `micro/examples/rp2350/src/main_step7_synthesize.cc` -> cstdio, hardware/watchdog.h, pico/cyw43_arch.h, pico/stdlib.h, pico/time.h
+- `micro/examples/rp2350/src/main_step7b_framesweep.cc` -> cstdio, pico/cyw43_arch.h, pico/stdlib.h, pico/time.h
+- `micro/examples/rp2350/src/main_step7c_synthonly.cc` -> cmath, cstdio, pico/cyw43_arch.h, pico/stdlib.h, pico/time.h
+- `micro/examples/rp2350/src/main_tflm_invoke_test.cc` -> cstdint, cstdio, cstring, hardware/clocks.h, hardware/structs/qmi.h, hardware/structs/watchdog.h, hardware/vreg.h, hardware/watchdog.h, pico/stdlib.h, pico/time.h, tensorflow/lite/micro/micro_interpreter.h, tensorflow/lite/micro/micro_mutable_op_resolver.h, tensorflow/lite/micro/micro_profiler_interface.h, tensorflow/lite/schema/schema_generated.h
+- `micro/examples/rp2350/src/main_tts.cc` -> cstdio, hardware/clocks.h, hardware/vreg.h, hardware/watchdog.h, pico/stdlib.h
+- `micro/examples/rp2350/src/main_tts_ladder_test.cc` -> cstdint, cstdio, cstdlib, hardware/structs/watchdog.h, hardware/watchdog.h, kiss_fftr.h, pico/stdlib.h, pico/time.h
+- `micro/examples/rp2350/src/main_usb_banner_test.cc` -> cstdio, hardware/structs/watchdog.h, hardware/watchdog.h, pico/stdlib.h
+- `micro/examples/rp2350/src/op_profiler.cc` -> cstdio, pico/time.h
+- `micro/examples/rp2350/src/op_profiler.h` -> cstdint, tensorflow/lite/micro/micro_profiler_interface.h
+- `micro/examples/rp2350/src/test_app.cc` -> cstddef, cstdint, cstdio, kiss_fftr.h, pico/stdlib.h, pico/time.h
+- `micro/examples/rp2350/src/tts_service.cc` -> cstdio, cstdlib, cstring, hardware/watchdog.h, pico/stdlib.h
+- `micro/examples/rp2350/src/tts_service.h` -> cstddef, cstdint
+- `micro/examples/rp2350/src/usb_audio_io.cc` -> cstddef, cstdio, pico/stdlib.h
+- `micro/examples/rp2350/src/wifi_app.cc` -> cstdint, cstdio, cstring, kiss_fftr.h, lwip/netif.h, pico/cyw43_arch.h, pico/stdlib.h
+- `micro/examples/rp2350/src/wifi_hardware_app.cc` -> cstdio
+- `micro/feature-generation/include/feature_generation/feature_generation.h` -> cstddef, cstdint, vector
+- `micro/feature-generation/scripts/generate_mel_tables.py` -> argparse, math, os
+- `micro/feature-generation/src/fft_scratch.h` -> kiss_fft.h
+- `micro/feature-generation/src/log_mel.cc` -> algorithm, cmath, cstring, kiss_fftr.h, tensorflow/lite/micro/micro_log.h, vector
+- `micro/feature-generation/src/mel_streamer.cc` -> cmath, kiss_fftr.h, tensorflow/lite/micro/micro_log.h
+- `micro/feature-generation/tests/feature_generation_test.cc` -> cmath, kiss_fftr.h, tensorflow/lite/micro/testing/micro_test.h, vector
+- `micro/g2p/include/g2p/g2p.h` -> string, vector
+- `micro/g2p/include/g2p/g2p_dict.h` -> string, string_view, utility, vector
+- `micro/g2p/include/g2p/g2p_phones.h` -> cstddef
+- `micro/g2p/src/g2p.cc` -> cctype, string
+- `micro/g2p/src/g2p_dict.cc` -> algorithm, cctype, cstdint, fstream, string
+- `micro/g2p/src/g2p_dict_data.h` -> cstdint
+- `micro/g2p/src/g2p_numbers.cc` -> algorithm, cctype, string, vector
+- `micro/g2p/src/g2p_numbers.h` -> string, string_view
+- `micro/g2p/src/g2p_phones.cc` -> cctype, cstring, string
+- `micro/g2p/src/g2p_rules.cc` -> cctype, cstring, string, string_view, unordered_map, utility, vector
+- `micro/g2p/src/g2p_rules.h` -> string, string_view
+- `micro/g2p/src/ipa_tokens.cc` -> array, cstddef, string
+- `micro/klatt-tts/include/tts/config.h` -> string, vector
+- `micro/klatt-tts/include/tts/klatt.h` -> cstdint, vector
+- `micro/klatt-tts/include/tts/phonemes.h` -> cstdint, string, vector
+- `micro/klatt-tts/include/tts/synth_internal.h` -> cstddef, cstdint, vector
+- `micro/klatt-tts/include/tts/synth_stream.h` -> cstddef, cstdint, optional, string
+- `micro/klatt-tts/src/config.cc` -> cstdio, fstream, sstream, string, unordered_map, vector
+- `micro/klatt-tts/src/klatt.cc` -> algorithm, cmath
+- `micro/klatt-tts/src/phonemes.cc` -> algorithm, array, unordered_map, utility
+- `micro/klatt-tts/src/synth_internal.cc` -> algorithm, cmath, cstring, string
+- `micro/klatt-tts/src/synth_stream.cc` -> algorithm, cmath, vector
+- `micro/klatt-tts/tests/tts_test.cc` -> string, tensorflow/lite/micro/testing/micro_test.h, vector
+- `micro/neural-tts/host/tflm_ref/add.cpp` -> limits, tensorflow/lite/c/builtin_op_data.h, tensorflow/lite/c/common.h, tensorflow/lite/kernels/internal/quantization_util.h, tensorflow/lite/kernels/internal/reference/process_broadcast_shapes.h, tensorflow/lite/kernels/internal/tensor_ctypes.h, tensorflow/lite/kernels/kernel_util.h, tensorflow/lite/kernels/op_macros.h, tensorflow/lite/micro/kernels/kernel_util.h, tensorflow/lite/micro/memory_helpers.h, tensorflow/lite/micro/micro_log.h
+- `micro/neural-tts/host/tflm_ref/conv.cpp` -> tensorflow/lite/c/builtin_op_data.h, tensorflow/lite/c/common.h, tensorflow/lite/kernels/kernel_util.h, tensorflow/lite/micro/kernels/kernel_util.h, tensorflow/lite/micro/micro_log.h
+- `micro/neural-tts/host/tflm_ref/host_platform.cpp` -> chrono, cstdarg, cstddef, cstdint, cstdio, tensorflow/lite/micro/micro_time.h
+- `micro/neural-tts/host/tflm_ref/transpose_conv.cpp` -> cstddef, cstdint, tensorflow/lite/c/builtin_op_data.h, tensorflow/lite/c/common.h, tensorflow/lite/kernels/internal/common.h, tensorflow/lite/kernels/internal/quantization_util.h, tensorflow/lite/kernels/internal/tensor_ctypes.h, tensorflow/lite/kernels/kernel_util.h, tensorflow/lite/kernels/padding.h, tensorflow/lite/micro/kernels/kernel_util.h, tensorflow/lite/micro/micro_log.h
+- `micro/neural-tts/host/tts_cli.cc` -> cstdint, cstdio, cstring, string, vector
+- `micro/neural-tts/host/worldlite_synth_cli.cc` -> cstdio, cstdlib, cstring, vector
+- `micro/neural-tts/include/neural_tts/neural_tts.h` -> cstddef, cstdint
+- `micro/neural-tts/include/neural_tts/pack_format.h` -> cstdint
+- `micro/neural-tts/include/neural_tts/pb_decoder.h` -> cstddef, cstdint
+- `micro/neural-tts/include/neural_tts/worldlite_synth.h` -> cstdint, kiss_fftr.h
+- `micro/neural-tts/src/hooks.cc` -> cstdint
+- `micro/neural-tts/src/neural_tts.cc` -> cmath, cstring, new, pico/time.h, string, vector
+- `micro/neural-tts/src/pb_decoder.cc` -> cmath, cstdio, cstring, new, pico/time.h, tensorflow/lite/micro/micro_interpreter.h, tensorflow/lite/micro/micro_log.h, tensorflow/lite/micro/micro_mutable_op_resolver.h, tensorflow/lite/micro/micro_profiler_interface.h, tensorflow/lite/schema/schema_generated.h
+- `micro/neural-tts/src/worldlite_synth.cc` -> cmath, cstdio, cstdlib, cstring, pico/time.h
+- `micro/stt-training/stt_training/augment.py` -> __future__, math, numpy, pathlib, random, soundfile, torch, torch.nn, torchaudio
+- `micro/stt-training/stt_training/checkpoint.py` -> __future__, numpy, pathlib, random, soundfile, torch, torch.nn.functional, torchaudio
+- `micro/stt-training/stt_training/dataset.py` -> __future__, collections, numpy, pathlib, random, soundfile, torch, torch.nn.functional, torch.utils.data, torchaudio, typing
+- `micro/stt-training/stt_training/evaluate.py` -> __future__, argparse, collections, numpy, pathlib, torch, torch.utils.data
+- `micro/stt-training/stt_training/export.py` -> __future__, ai_edge_litert, ai_edge_litert.interpreter, ai_edge_quantizer, argparse, flatbuffers, json, litert_torch, numpy, pathlib, torch
+- `micro/stt-training/stt_training/features.py` -> __future__, torch, torch.nn, torch.nn.functional, torchaudio
+- `micro/stt-training/stt_training/model.py` -> __future__, re, torch, torch.nn, torch.nn.functional, typing
+- `micro/stt-training/stt_training/train.py` -> __future__, argparse, math, pathlib, random, time, torch, torch.nn.functional, torch.utils.data, tqdm.auto
+- `micro/stt-training/stt_training/words.py` -> __future__, pathlib
+- `micro/stt-training/tools/download_musan_rirs.py` -> __future__, argparse, pathlib, random, tarfile, tempfile, urllib.request, zipfile
+- `micro/stt-training/tools/extract_clips.py` -> __future__, argparse, collections, dataclasses, json, numpy, pathlib, random, re, soundfile, sys, torch, torchaudio, torchaudio.functional, typing
+- `micro/stt-training/tools/mine_peoples_speech.py` -> __future__, argparse, huggingface_hub, io, json, numpy, os, pathlib, pyarrow.parquet, re, soundfile, sys, time, torch, torchaudio
+- `micro/stt-training/tools/synthesize.py` -> __future__, argparse, librosa, moonshine_voice, moonshine_voice.tts, numpy, pathlib, soundfile, sys
+- `micro/stt/include/stt/stt.h` -> cstddef, cstdint
+- `micro/stt/scripts/desktop_parity.py` -> __future__, ai_edge_litert, argparse, export_spelling_cnn_litert, json, math, models.log_mel_pure, numpy, pathlib, re, sys
+- `micro/stt/scripts/generate_embedded_data.py` -> __future__, argparse, datasets, json, math, models.log_mel_pure, pathlib, shutil, struct, sys, tempfile, textwrap
+- `micro/stt/src/classifier.cc` -> cstdint, cstring, tensorflow/lite/micro/micro_interpreter.h, tensorflow/lite/micro/micro_log.h, tensorflow/lite/micro/micro_mutable_op_resolver.h, tensorflow/lite/schema/schema_generated.h
+- `micro/stt/src/predictor.cc` -> cmath
+- `micro/stt/tests/predictor_test.cc` -> cmath, tensorflow/lite/micro/testing/micro_test.h
+- `micro/test-support/host/tflm_host_stub.cc` -> cstdarg, cstddef, cstdio
+- `micro/vad/include/vad/vad.h` -> cstddef, cstdint
+- `micro/vad/scripts/generate_vad_embedded_data.py` -> __future__, argparse, json, math, models.log_mel_pure, models.vad_net, pathlib, sys, textwrap
+- `micro/vad/src/vad.cc` -> cmath, cstdint, tensorflow/lite/micro/micro_interpreter.h, tensorflow/lite/micro/micro_log.h, tensorflow/lite/micro/micro_mutable_op_resolver.h, tensorflow/lite/schema/schema_generated.h
+- `micro/vad/src/vad_segmenter.cc` -> tensorflow/lite/micro/micro_log.h
+- `micro/vad/tests/vad_segmenter_test.cc` -> cstddef, tensorflow/lite/micro/testing/micro_test.h, vector
+- `python/setup.py` -> os, setuptools, wheel.bdist_wheel
+- `python/src/moonshine_voice/__init__.py` -> moonshine_voice.dialog_flow, moonshine_voice.g2p, moonshine_voice.transcriber, moonshine_voice.tts
+- `python/src/moonshine_voice/alphanumeric_listener.py` -> argparse, dataclasses, enum, moonshine_voice, moonshine_voice.transcriber, sys, threading, time, typing
+- `python/src/moonshine_voice/cached_embeddings.py` -> __future__, os, sys, typing
+- `python/src/moonshine_voice/cli.py` -> __future__, importlib.metadata, moonshine_voice, runpy, sys, typing, warnings
+- `python/src/moonshine_voice/dialog_flow.py` -> __future__, argparse, dataclasses, moonshine_voice.transcriber, moonshine_voice.tts, numpy, sounddevice, sys, threading, time, typing
+- `python/src/moonshine_voice/download.py` -> argparse, dataclasses, enum, json, os, pathlib, re, sys, typing, urllib.parse
+- `python/src/moonshine_voice/download_file.py` -> filelock, hashlib, os, pathlib, platform, platformdirs, requests, tqdm, typing
+- `python/src/moonshine_voice/errors.py` -> typing
+- `python/src/moonshine_voice/g2p.py` -> argparse, pathlib, sys, typing
+- `python/src/moonshine_voice/intent_recognizer.py` -> argparse, ctypes, dataclasses, moonshine_voice, moonshine_voice.transcriber, pathlib, sys, time, typing
+- `python/src/moonshine_voice/mic_transcriber.py` -> argparse, moonshine_voice, moonshine_voice.transcriber, numpy, queue, sounddevice, sys, threading, time, typing
+- `python/src/moonshine_voice/moonshine_api.py` -> ctypes, ctypes.util, dataclasses, enum, pathlib, platform, sys, typing
+- `python/src/moonshine_voice/tts.py` -> argparse, array, ctypes, dataclasses, moonshine_voice.transcriber, numpy, pathlib, queue, sounddevice, sys, threading, time, traceback, typing, wave
+- `python/src/moonshine_voice/utils.py` -> os, pathlib, struct, typing
+- `python/tests/test_cli.py` -> pathlib, pytest, shutil, subprocess, sys
+- `python/tests/test_docs.py` -> dataclasses, os, pathlib, pytest, subprocess, sys, textwrap
+- `python/tests/test_mic_transcriber_threading.py` -> moonshine_voice, numpy, pytest, threading, time
+- `python/tests/test_modules.py` -> moonshine_voice, pathlib, pytest, subprocess, sys
+- `scripts/analyze_ko_phoneme_patterns.py` -> __future__, collections, json, pathlib, re, sys
+- `scripts/analyze_ko_stress.py` -> __future__, collections, json, moonshine_voice.g2p, pathlib, piper, piper.phonemize_espeak, re, shutil, sys, unicodedata
+- `scripts/compare_ko_phonemes.py` -> __future__, collections, json, moonshine_voice.g2p, pathlib, piper, piper.phonemize_espeak, re, shutil, sys, unicodedata
+- `scripts/convert_tokenizer.py` -> argparse, json, pathlib, sentencepiece, struct, sys
+- `scripts/eval-alphanumeric.py` -> argparse, collections, moonshine_voice, moonshine_voice.transcriber, numpy, pathlib, sys
+- `scripts/eval-librispeech.py` -> argparse, datasets, io, jiwer, moonshine_voice, numpy, scipy.signal, soundfile, sys, time, torch, tqdm, transformers, whisper.normalizers
+- `scripts/eval-model-accuracy.py` -> argparse, datasets, jiwer, json, moonshine_voice, numpy, os, pandas, tqdm, transformers, transformers.pipelines.base, whisper.normalizers
+- `scripts/eval-speaker-id.py` -> argparse, datasets, moonshine_voice, numpy, pyannote.core, pyannote.metrics.diarization
+- `scripts/export-decoder-with-attention.py` -> argparse, onnx, onnxruntime, os, sys
+- `scripts/export_zipvoice_model.py` -> argparse, pathlib, shutil, subprocess, sys, tempfile
+- `scripts/export_zipvoice_voices_for_cpp.py` -> argparse, json, moonshine_voice, numpy, pathlib, re, soundfile
+- `scripts/generate-diarization-test-audio.py` -> __future__, argparse, moonshine_voice.tts, pathlib, sys, typing, wave
+- `scripts/generate-silero-vad-data.py` -> argparse, hashlib, onnxruntime, pathlib, shutil, tempfile, urllib.request
+- `scripts/run-benchmarks.py` -> argparse, faster_whisper, moonshine_voice, numpy, time
+- `scripts/tts_g2p_intelligibility.py` -> __future__, argparse, dataclasses, datasets, faster_whisper, hashlib, jiwer, json, kokoro, logging, moonshine_voice.g2p, moonshine_voice.tts, numpy, pathlib, piper, piper.phonemize_espeak, random, re, shutil, sys, tqdm, typing, unicodedata, wave
+- `swift/Package.swift` -> PackageDescription
+- `swift/Sources/MoonshineVoice/AssetDownloadError.swift` -> Foundation
+- `swift/Sources/MoonshineVoice/AssetDownloader.swift` -> Foundation
+- `swift/Sources/MoonshineVoice/EmbeddingModelArch.swift` -> Foundation
+- `swift/Sources/MoonshineVoice/Errors.swift` -> Foundation
+- `swift/Sources/MoonshineVoice/Events.swift` -> Foundation
+- `swift/Sources/MoonshineVoice/IntentRecognizer.swift` -> Foundation
+- `swift/Sources/MoonshineVoice/MicTranscriber.swift` -> Foundation
+- `swift/Sources/MoonshineVoice/ModelArch.swift` -> Foundation
+- `swift/Sources/MoonshineVoice/MoonshineAPI.swift` -> Foundation, Moonshine
+- `swift/Sources/MoonshineVoice/Stream.swift` -> Foundation
+- `swift/Sources/MoonshineVoice/TextToSpeech.swift` -> AVFoundation, CoreAudio, Foundation
+- `swift/Sources/MoonshineVoice/Transcriber.swift` -> Foundation
+- `swift/Sources/MoonshineVoice/Transcript.swift` -> Foundation
+- `swift/Sources/MoonshineVoice/TranscriptEventListener.swift` -> Foundation
+- `swift/Sources/MoonshineVoice/TranscriptionStream.swift` -> Foundation
+- `swift/Sources/MoonshineVoice/TtsSynthesisResult.swift` -> Foundation
+- `swift/Sources/MoonshineVoice/WAVLoader.swift` -> Foundation
+- `swift/Tests/MoonshineVoiceTests/AssetDownloaderNetworkTests.swift` -> Foundation, XCTest
+- `swift/Tests/MoonshineVoiceTests/AssetDownloaderTests.swift` -> Foundation, XCTest
+- `swift/Tests/MoonshineVoiceTests/IntentRecognizerTests.swift` -> Foundation, XCTest
+- `swift/Tests/MoonshineVoiceTests/MicTranscriberThreadingTests.swift` -> Foundation, XCTest
+- `swift/Tests/MoonshineVoiceTests/TextToSpeechTests.swift` -> Foundation, XCTest
+- `swift/Tests/MoonshineVoiceTests/TranscriberTests.swift` -> Foundation, XCTest
+
